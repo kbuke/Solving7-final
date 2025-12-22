@@ -18,6 +18,13 @@ class TeamMemberModel(db.Model, SerializerMixin):
     email = db.Column(db.String, nullable = False, unique = True)
     _password_hash = db.Column(db.String, nullable = False)
 
+    # RELATIONSHIPS
+    teams = db.relationship("TeamModel", back_populates = "members", secondary = "member_teams")
+
+    serialize_rules = (
+        "-teams.members",
+    )
+
     # VALIDATE MEMBERS NAME AND INTRO
     @validates("name", "intro")
     def validate_name_and_intro(self, key, value):
@@ -41,9 +48,6 @@ class TeamMemberModel(db.Model, SerializerMixin):
         
         # 4 - Ensure email is not already registered
         value = validate_uniqueness(value, self, TeamMemberModel, key, TeamMemberModel)
-        # existing_email = TeamMemberModel.query.filter(TeamMemberModel.email == value).first()
-        # if existing_email and existing_email.id != self.id:
-        #     raise ValueError(f"Email address: {value} is already registered on the application.")
         
         return value
     
