@@ -2,6 +2,9 @@ from sqlalchemy.orm import validates
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.hybrid import hybrid_property
 
+from validators.validate_string import validate_string
+from validators.validate_uniqueness import validate_uniqueness
+
 from config import db, bcrypt
 import re
 
@@ -15,34 +18,32 @@ class TeamMemberModel(db.Model, SerializerMixin):
     email = db.Column(db.String, nullable = False, unique = True)
     _password_hash = db.Column(db.String, nullable = False)
 
+    # VALIDATE MEMBERS NAME AND INTRO
+    @validates("name", "intro")
+    def validate_name_and_intro(self, key, value):
+        return validate_string(value, key.capitalize())
+
     # VALIDATE USER EMAIL ADDRESS
     @validates("email")
     def validate_email(self, key, value):
-        # 1 - Ensure email is not a boolean or null value
-        if isinstance(value, bool) or value is None or value.strip() == "":
-            raise ValueError("Please enter a proper value")
+        # 1 - Ensure email has a valid value
+        value = validate_string(value, "Email")
         
-        # 2 - If value is not string see if it can be converted
-        if not isinstance(value, str):
-            try:
-                value = str(value)
-            except ValueError:
-                raise ValueError("Please enter a legitimate string")
-        
-        # 3 - Ensure value meets requirements for email address
+        # 2 - Ensure value meets requirements for email address
         email_pattern = r"^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" 
 
         if not re.match(email_pattern, value):
             raise ValueError("Invalid email address")
         
-        # 4 - Check email address ends in @solving7green.com
+        # 3 - Check email address ends in @solving7green.com
         if not value.endswith("@solving7green.com"):
             raise ValueError("Email address must end with @solving7green.com")
         
-        # 5 - Ensure email is not already registered
-        existing_email = TeamMemberModel.query.filter(TeamMemberModel.email == value).first()
-        if existing_email and existing_email.id != self.id:
-            raise ValueError(f"Email address: {value} is already registered on the application.")
+        # 4 - Ensure email is not already registered
+        value = validate_uniqueness(value, self, TeamMemberModel, key, TeamMemberModel)
+        # existing_email = TeamMemberModel.query.filter(TeamMemberModel.email == value).first()
+        # if existing_email and existing_email.id != self.id:
+        #     raise ValueError(f"Email address: {value} is already registered on the application.")
         
         return value
     
