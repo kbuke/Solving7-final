@@ -6,6 +6,9 @@ from resources.MemberTeams import MemberTeamsList, SpecificMemberTeamsList
 from resources.Pillars import PillarList, SpecificPillar
 from resources.UnSustainability import UnSustainabilityList, SpecificUnSustainabilityGoal
 from resources.Products import ProductsList, SpecificProduct
+from resources.Intro import SpecificIntro
+from resources.Email import EmailList
+from resources.PillarProducts import PillarProductsList, SpecificPillarProductsList
 
 api.add_resource(TeamMemberList, "/members")
 api.add_resource(SpecificTeamMember, "/members/<int:id>")
@@ -24,6 +27,13 @@ api.add_resource(SpecificUnSustainabilityGoal, "/sustainabilitygoals/<int:id>")
 
 api.add_resource(ProductsList, "/products")
 api.add_resource(SpecificProduct, "/products/<int:id>")
+
+api.add_resource(SpecificIntro, "/intro/<int:id>")
+
+api.add_resource(EmailList, "/emails")
+
+api.add_resource(PillarProductsList, "/pillarproducts")
+api.add_resource(SpecificPillarProductsList, "/pillarproducts/<int:id>")
 
 if __name__ == "__main__":
     app.run(port = 5555, debug = True)

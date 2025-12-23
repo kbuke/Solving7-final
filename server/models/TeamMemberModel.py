@@ -4,6 +4,7 @@ from sqlalchemy.ext.hybrid import hybrid_property
 
 from validators.validate_string import validate_string
 from validators.validate_uniqueness import validate_uniqueness
+from validators.validate_email import validate_email
 
 from config import db, bcrypt
 import re
@@ -37,10 +38,11 @@ class TeamMemberModel(db.Model, SerializerMixin):
         value = validate_string(value, "Email")
         
         # 2 - Ensure value meets requirements for email address
-        email_pattern = r"^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" 
+        value = validate_email(value)
+        # email_pattern = r"^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" 
 
-        if not re.match(email_pattern, value):
-            raise ValueError("Invalid email address")
+        # if not re.match(email_pattern, value):
+        #     raise ValueError("Invalid email address")
         
         # 3 - Check email address ends in @solving7green.com
         if not value.endswith("@solving7green.com"):

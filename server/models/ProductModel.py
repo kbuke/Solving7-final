@@ -14,6 +14,12 @@ class ProductModel(db.Model, SerializerMixin):
     img = db.Column(db.String, nullable = False, unique = True)
     info = db.Column(db.String, nullable = False, unique = True)
 
+    pillars = db.relationship("PillarModel", back_populates = "products", secondary = "pillar_products")
+
+    serialize_rules = (
+        "-pillars.products",
+    )
+
     # VALIDATIONS
     @validates("name")
     def validate_product_name(self, key, value):

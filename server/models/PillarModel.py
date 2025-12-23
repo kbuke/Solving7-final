@@ -15,6 +15,12 @@ class PillarModel(db.Model, SerializerMixin):
     intro = db.Column(db.String, nullable = False)
     img = db.Column(db.String, nullable = False)
 
+    products = db.relationship("ProductModel", back_populates = "pillars", secondary = "pillar_products")
+
+    serialize_rules = (
+        "-products.pillars",
+    )
+
     # VALIDATIONS 
     @validates("pillar")
     def validate_pillar(self, key, value):
