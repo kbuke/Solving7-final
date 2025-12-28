@@ -1,6 +1,6 @@
 export function LoadingIcon(){
     return(
-        <div class="flex items-center justify-center bg-slate-900 h-20">
+        <div class="flex items-center justify-center h-20">
             <svg
                 class="w-18 text-white animate-spin"
                 xmlns="http://www.w3.org/2000/svg"

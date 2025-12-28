@@ -10,7 +10,9 @@ export function Buttons({
                 text-white
                 mt-4
                 ${buttonType==="Submit" && submitEnabled===true ? "cursor-not-allowed" : "cursor-pointer"}
-                ${buttonType==="Submit" ? "bg-linear-to-r from-green-400 to-green-700" : null}`}
+                ${buttonType==="Submit" ? "bg-linear-to-r from-green-400 to-green-700" : null}
+                hover:-translate-y-2
+                `}
         >
             {text}
         </button>
