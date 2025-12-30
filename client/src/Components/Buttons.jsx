@@ -6,12 +6,10 @@ export function Buttons({
     return(
         <button
             className={
-                `rounded-lg p-4 
-                text-white
-                mt-4
-                ${buttonType==="Submit" && submitEnabled===true ? "cursor-not-allowed" : "cursor-pointer"}
-                ${buttonType==="Submit" ? "bg-linear-to-r from-green-400 to-green-700" : null}
-                hover:-translate-y-2
+                `${buttonType==="Submit" 
+                    ? "submit-button"
+                    : null
+                }
                 `}
         >
             {text}

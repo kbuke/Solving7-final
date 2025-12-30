@@ -1,20 +1,115 @@
 @import "tailwindcss";
 
 /* Define things like divs and h1 tags */
-@layer base {
+/* @layer base {
     h1{
         @apply text-6xl;
     }
-}
+} */
 
 /* Define classes to use in your frontend */
-@layer components{
+/* @layer components{
     .sectionHeading{
         @apply text-4xl uppercase;
     }
-}
+} */
 
 /* Change predefined values in Tailwind */
-@theme {
+/* @theme {
     --text-lg: 40px
+} */
+
+@layer base{
+    h1{
+        @apply
+            uppercase
+            text-[40px]
+            text-center;
+    }
+}
+
+/* ------------------------------ BUTTONS ------------------------------ */
+@layer base{
+    button{
+        @apply
+            rounded-lg
+            p-4 
+            text-white 
+            mt-4 
+            hover:-translate-y-1.5
+            hover:shadow-lg
+            focus:translate-y-0.5
+            cursor-pointer
+            transition-all;
+    }
+}
+
+@layer components{
+    .submit-button{
+        @apply
+            bg-linear-to-r from-green-400 to-green-700;
+    }
+}
+
+
+/* ------------------------------ DEFINE SOCIAL MEDIA CONTAINERS ------------------------------ */
+@layer components {
+  .social-icon {
+    @apply
+      w-22.5
+      h-22.5
+      bg-[#f1f1f1]
+      m-2.5
+      rounded-[30%]
+      text-[#10ac84]
+      shadow-[0_5px_15px_-5px_#00000070]
+      relative
+      flex
+      items-center
+      justify-center
+      overflow-hidden;
+  }
+
+  .social-icon::before {
+    content: "";
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    background-color: #10ac84;
+    left: 110%;
+    top: 90%;
+    transform: rotate(45deg);
+    transition: all 0.7s ease;
+    z-index: 0;
+  }
+
+  .social-icon:hover::before {
+    animation: slide-bg 0.7s forwards;
+  }
+
+  .social-icon-img {
+    font-size: 25px;
+    transition: transform 0.3s, color 0.3s;
+    z-index: 1;
+  }
+
+  .social-icon:hover .social-icon-img {
+    transform: scale(1.3);
+    color: #f1f1f1;
+  }
+}
+
+@keyframes slide-bg {
+  0% {
+    left: 110%;
+    top: 90%;
+  }
+  50% {
+    left: 15%;
+    top: -30%;
+  }
+  100% {
+    left: -10%;
+    top: -10%;
+  }
 }

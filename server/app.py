@@ -9,6 +9,11 @@ from resources.Products import ProductsList, SpecificProduct
 from resources.Intro import SpecificIntro
 from resources.Email import EmailList
 from resources.PillarProducts import PillarProductsList, SpecificPillarProductsList
+from resources.Socials import SocialsList, SpecificSocial
+
+from resources.Login import Login
+from resources.Logout import Logout
+from resources.CheckSession import CheckSession
 
 api.add_resource(TeamMemberList, "/members")
 api.add_resource(SpecificTeamMember, "/members/<int:id>")
@@ -34,6 +39,15 @@ api.add_resource(EmailList, "/emails")
 
 api.add_resource(PillarProductsList, "/pillarproducts")
 api.add_resource(SpecificPillarProductsList, "/pillarproducts/<int:id>")
+
+api.add_resource(SocialsList, "/socials")
+api.add_resource(SpecificSocial, "/socials/<int:id>")
+
+api.add_resource(CheckSession, "/session")
+
+api.add_resource(Login, "/login")
+
+api.add_resource(Logout, "/logout")
 
 if __name__ == "__main__":
     app.run(port = 5555, debug = True)

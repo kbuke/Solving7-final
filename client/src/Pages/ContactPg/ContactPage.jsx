@@ -7,6 +7,10 @@ export function ContactPage(){
 
     const allEmails = appData?.allEmails
     const setAllEmails = appData?.setAllEmails
+
+    const allSocials = appData?.allSocials
+    const setAllSocials = appData?.setAllSocials
+
     const isLoading = appData?.isLoading
     const setIsLoading = appData?.setIsLoading
     const register = appData?.register
@@ -14,8 +18,19 @@ export function ContactPage(){
     const errors = appData?.errors
 
     return(
-        <div className="grid grid-cols-[3.5fr_6.5fr] w-scren p-20">
-            <SocialMedia />
+        <div className="
+            flex flex-col
+            w-screen
+            p-6
+
+            lg:grid
+            lg:grid-cols-[3.5fr_6.5fr]
+            lg:p-20
+        ">
+            <SocialMedia 
+                allSocials={allSocials}
+                setAllSocials={setAllSocials}
+            />
 
             <PostEmail 
                 allEmails={allEmails}

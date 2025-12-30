@@ -1,13 +1,11 @@
 import { useEffect } from "react";
 
 export function useFetch(url, setState, dependancies=[]){
-    console.log(url)
     useEffect(() => {
         const controller = new AbortController()
 
         fetch(url, {signal: controller.signal})
         .then(r => {
-            console.log(r)
             if(r.ok){
                 return r.json()
             }

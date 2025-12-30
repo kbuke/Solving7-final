@@ -47,16 +47,23 @@ export function TextContainers({
                 textArray.map((field, index) => {
                     return(
                         <div key={index} className="border-b">
-                            <div key={index} className="p-4 grid grid-cols-2 items-center">
+                            <div key={index} className="
+                                flex flex-col 
+                                p-4 
+                                items-center
+                                w-full
+                                lg:grid lg:grid-cols-[4fr_6fr]
+                            ">
                                 <label className="p-4">
                                     {field?.label}
                                 </label>
 
-                                {field.type === "text"
+                                {field.type === "text" || "password"
                                     ? <input 
                                         className="focus:uppercase border pl-3 pr-3 w-100 rounded-lg text-center h-10"
                                         placeholder={field?.label}
                                         {...register(field.name, field.validation)}
+                                        type={field?.type}
                                     />
                                     : <textarea 
                                         className="focus: uppercase border pl-3 pr-3 w-100 rounded-lg h-60"

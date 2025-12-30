@@ -1,46 +1,48 @@
-export async function usePost(
+export async function usePost({
     url,
-    information,
-    prevState,
-    setState,
-    setPosting,
-    setError,
+    body,
+    onSuccess,
+    onError,
+    setLoading,
     setCompleted,
-    setEndActionState
-) {
-    setPosting(true)
-    setError(false)
-    setCompleted(false)
+    setEndActionState,
+    credentials = "same-origin"
+}) {
+    setLoading?.(true)
+    setCompleted?.(false)
 
     try {
-        const response = await fetch(url, {
+        const res = await fetch(url, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(information)
+            credentials,
+            body: JSON.stringify(body)
         })
 
-        if (!response.ok) {
-            const errorData = await response.json()
-            throw new Error(errorData?.error || "Something went wrong")
+        if (!res.ok) {
+            const err = await res.json()
+            throw new Error(err?.error || "Something went wrong")
         }
 
-        const newAddition = await response.json()
+        const data = await res.json()
 
-        setState([...prevState, newAddition])
+        onSuccess?.(data)
+
+        setCompleted?.(true)
 
         if (setEndActionState) {
             setEndActionState(null)
         }
 
-        setCompleted(true)
+        return data
 
     } catch (err) {
         console.error(err)
-        setError(true)
-
+        onError?.(err.message)
     } finally {
-        setPosting(false)
+        setLoading?.(false)
     }
 }
+

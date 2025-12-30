@@ -1,5 +1,5 @@
-import { TextContainers } from "../../Components/TextContainers"
-import { usePost } from "../../Hooks/usePost"
+import { TextContainers } from "../../../Components/TextContainers"
+import {usePost} from "../../../Hooks/usePost"
 import { useState } from "react"
 
 export function PostEmail({
@@ -14,17 +14,30 @@ export function PostEmail({
     const [emailError, setEmailError] = useState(false)
     const [emailSent, setEmailSent] = useState(false)
 
-    const handleNewEmail = (formData) => {
-        usePost(
-            "/api/emails",
-            formData,
-            allEmails,
-            setAllEmails,
-            setIsLoading,
-            setEmailError,
-            setEmailSent
-        )
-    }
+    // const handleNewEmail = (formData) => {
+    //     usePost(
+    //         "/api/emails",
+    //         formData,
+    //         allEmails,
+    //         setAllEmails,
+    //         setIsLoading,
+    //         setEmailError,
+    //         setEmailSent
+    //     )
+    // }
+const handleNewEmail = (formData) => {
+    usePost({
+        url: "/api/emails",
+        body: formData,
+        setLoading: setIsLoading,
+        setCompleted: setEmailSent,
+        onError: () => setEmailError(true),
+        onSuccess: (newEmail) => {
+            setAllEmails(prev => [...prev, newEmail])
+        }
+    })
+}
+
 
     const emailAarray = [
         {
