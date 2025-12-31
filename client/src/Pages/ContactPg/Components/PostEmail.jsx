@@ -14,17 +14,6 @@ export function PostEmail({
     const [emailError, setEmailError] = useState(false)
     const [emailSent, setEmailSent] = useState(false)
 
-    // const handleNewEmail = (formData) => {
-    //     usePost(
-    //         "/api/emails",
-    //         formData,
-    //         allEmails,
-    //         setAllEmails,
-    //         setIsLoading,
-    //         setEmailError,
-    //         setEmailSent
-    //     )
-    // }
 const handleNewEmail = (formData) => {
     usePost({
         url: "/api/emails",

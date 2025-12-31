@@ -40,15 +40,48 @@
             hover:shadow-lg
             focus:translate-y-0.5
             cursor-pointer
-            transition-all;
+            transition-all
+            w-20;
     }
 }
 
 @layer components{
-    .submit-button{
-        @apply
-            bg-linear-to-r from-green-400 to-green-700;
+    .submit-button,
+    .post-button{
+      @apply
+        bg-linear-to-r from-green-400 to-green-700
+        justify-self-center flex
+        w-40
+        items-center
+        text-center
+        uppercase;
     }
+
+    .edit-button{
+      @apply
+        bg-linear-to-r from-blue-400 to-blue-700
+    }
+
+    .delete-button{
+      @apply
+        bg-linear-to-r from-red-400 to-red-700
+    }
+}
+
+/* ------------------------------ PopUp Container ------------------------------ */
+@layer components{
+  .popup-container{
+    @apply
+      bg-black/60
+      absolute
+      top-0
+      w-full
+      h-full
+      z-20
+      flex
+      justify-center
+      items-center
+  }
 }
 
 

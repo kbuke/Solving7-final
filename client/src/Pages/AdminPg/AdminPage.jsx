@@ -1,7 +1,14 @@
+import { useOutletContext } from "react-router";
+import { AdminPillars } from "./AdminComponents/AdminPillars";
+
 export function AdminPage(){
+    const appData = useOutletContext()
+
     return(
         <div>
-            <h1>You are logged in</h1>
+            <AdminPillars 
+                appData={appData}
+            />
         </div>
     )
 }

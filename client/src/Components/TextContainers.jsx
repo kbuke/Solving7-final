@@ -13,14 +13,16 @@ export function TextContainers({
     error,
     errorText,
     completed,
-    completedText
+    completedText,
+    close,
+    setState
 }){
     return(
         <form 
             onSubmit={handleSubmit(onSubmit)}
             className="justify-center items-center flex flex-col rounded-lg p-10
                 bg-linear-to-br from-blue-200 to-blue-400
-                text-black
+                text-black opacity-100
             "
         >
             <h1
@@ -58,7 +60,7 @@ export function TextContainers({
                                     {field?.label}
                                 </label>
 
-                                {field.type === "text" || "password"
+                                {field.type === "text" || field.type === "password"
                                     ? <input 
                                         className="focus:uppercase border pl-3 pr-3 w-100 rounded-lg text-center h-10"
                                         placeholder={field?.label}
@@ -76,13 +78,27 @@ export function TextContainers({
                         </div>
                     )
                 })}
+            {close
+                ? <div className="flex flex-row gap-5">
+                    {completed
+                        ? null 
+                        : <Buttons 
+                            text={purpose}
+                            buttonType={"Submit"}
+                        />
+                    }
+                    <Buttons 
+                        text="Close"
+                        buttonType={"Close"}
+                        setState={setState}
+                    />
+                </div>
 
-            {completed 
-                ? null
-                :
-                <Buttons 
-                    text={"Send Email"}
-                    buttonType={"Submit"}
+                : completed
+                    ? null 
+                    : <Buttons 
+                        text={purpose}
+                        buttonType={"Submit"}
                 />
             }
         </form>

@@ -8,15 +8,19 @@ function App() {
     const [allEmails, setAllEmails] = useState([])
     const [allSocials, setAllSocials] = useState([])
     const [loggedUser, setLoggedUser] = useState([])
+    const [allPillars, setAllPillars] = useState([])
 
     useFetch("/api/emails", setAllEmails)
     useFetch("/api/socials", setAllSocials)
     useFetch("/api/session", setLoggedUser)
+    useFetch("/api/pillars", setAllPillars) 
 
     const {
         register,
         handleSubmit,
-        formState: {errors}
+        formState: {errors},
+        reset,
+        control
     } = useForm()
 
     const outletContext = {
@@ -24,9 +28,11 @@ function App() {
         allEmails, setAllEmails,
         allSocials, setAllSocials,
         loggedUser, setLoggedUser,
+        allPillars, setAllPillars,
 
         register, handleSubmit,
-        errors
+        errors, reset,
+        control
     }
 
     return(
