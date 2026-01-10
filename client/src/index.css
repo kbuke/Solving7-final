@@ -19,17 +19,17 @@
     --text-lg: 40px
 } */
 
-@layer base{
+/* @layer base{
     h1{
         @apply
             uppercase
             text-[40px]
             text-center;
     }
-}
+} */
 
 /* ------------------------------ BUTTONS ------------------------------ */
-@layer base{
+/* @layer base{
     button{
         @apply
             rounded-lg
@@ -66,10 +66,10 @@
       @apply
         bg-linear-to-r from-red-400 to-red-700
     }
-}
+} */
 
 /* ------------------------------ PopUp Container ------------------------------ */
-@layer components{
+/* @layer components{
   .popup-container{
     @apply
       bg-black/60
@@ -82,11 +82,11 @@
       justify-center
       items-center
   }
-}
+} */
 
 
 /* ------------------------------ DEFINE SOCIAL MEDIA CONTAINERS ------------------------------ */
-@layer components {
+/* @layer components {
   .social-icon {
     @apply
       w-22.5
@@ -144,5 +144,54 @@
   100% {
     left: -10%;
     top: -10%;
+  }
+} */
+ @layer base{
+  button{
+    @apply 
+      uppercase
+      text-white
+      w-30
+      h-15
+      rounded-xl
+      cursor-pointer
+
+      duration-150
+  }
+ }
+
+@layer components{
+  .form-headers{
+    @apply
+      uppercase
+      font-bold
+      text-5xl
+      mb-5
+  }
+
+  .form-error-div{
+    @apply 
+      bg-red-600
+      mb-4
+      rounded
+      w-3/5
+      p-3
+      text-white
+  }
+
+  .submit-button{
+    @apply 
+      bg-green-600
+  }
+}
+
+@layer components{
+  .login-container{
+    @apply
+      bg-white
+      w-70
+      rounded
+      text-center
+      h-10
   }
 }

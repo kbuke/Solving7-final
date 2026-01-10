@@ -2,7 +2,6 @@ from flask import session, make_response, request
 from flask_restful import Resource
 from config import db
 from models.EmailModel import EmailModel
-# from models.User import UserModel
 from email.message import EmailMessage
 import smtplib
 from dotenv import load_dotenv

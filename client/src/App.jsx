@@ -1,13 +1,12 @@
 import { useState } from "react"
 import { useFetch } from "./Hooks/useFetch"
-import { useForm } from "react-hook-form"
 import { Outlet } from "react-router"
 
 function App() {
     const [isLoading, setIsLoading] = useState(false)
     const [allEmails, setAllEmails] = useState([])
     const [allSocials, setAllSocials] = useState([])
-    const [loggedUser, setLoggedUser] = useState([])
+    const [loggedUser, setLoggedUser] = useState(null)
     const [allPillars, setAllPillars] = useState([])
 
     useFetch("/api/emails", setAllEmails)
@@ -15,13 +14,8 @@ function App() {
     useFetch("/api/session", setLoggedUser)
     useFetch("/api/pillars", setAllPillars) 
 
-    const {
-        register,
-        handleSubmit,
-        formState: {errors},
-        reset,
-        control
-    } = useForm()
+    console.log(loggedUser)
+
 
     const outletContext = {
         isLoading, setIsLoading,
@@ -30,9 +24,6 @@ function App() {
         loggedUser, setLoggedUser,
         allPillars, setAllPillars,
 
-        register, handleSubmit,
-        errors, reset,
-        control
     }
 
     return(
