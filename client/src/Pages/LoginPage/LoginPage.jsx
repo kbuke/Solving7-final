@@ -24,7 +24,6 @@ export function LoginPage() {
   } = useForm()
 
   const handleLogin = (formData) => {
-    console.log(formData)
     usePost({
       url: "/api/login",
       body: formData,

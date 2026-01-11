@@ -195,3 +195,59 @@
       h-10
   }
 }
+
+
+/* --------------------------- ADMIN --------------------------- */
+@layer components{
+  .admin-section-title{
+    @apply 
+      text-4xl
+      font-bold
+      tracking-wider 
+      uppercase
+  }
+
+  .instance-button-div{
+    @apply 
+      flex 
+      mt-2
+      gap-4
+      justify-center
+  }
+
+  .instance-button{
+    @apply 
+      w-40
+      hover:-translate-y-1.5
+  }
+
+  .edit-button{
+    @apply
+      bg-blue-600 
+  }
+
+  .delete-button{
+    @apply
+      bg-red-600
+  }
+
+  .text-input-container{
+    @apply 
+      border
+      w-80
+      text-center
+      h-10
+      rounded-2xl
+  }
+
+  .pillar-text-area,
+  .team-text-area,
+  .product-text-area{
+    @apply 
+      w-80
+      border
+      text-center
+      rounded
+      h-40
+  }
+}
