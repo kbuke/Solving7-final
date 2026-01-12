@@ -12,6 +12,8 @@ export function AdminInstance({
     setRelationAction,
     setSelectedId,
     chosenId,
+    setRelationalId,
+    chosenRelationalId,
     setInstanceAction
 }) {
     const instanceButtons = (type) => {
@@ -99,7 +101,14 @@ export function AdminInstance({
                                             {relation?.[relationalKey]}
                                         </li>
 
-                                        <button className="bg-red-600 h-10 w-20 self-center mt-2 mb-2">
+                                        <button 
+                                            className="bg-red-600 h-10 w-20 self-center mt-2 mb-2"
+                                            onClick={() => {
+                                                setRelationalId(relation?.id)
+                                                setRelationAction("delete")
+                                                setSelectedId(chosenId)
+                                            }}
+                                        >
                                             Delete
                                         </button>
                                     </div>

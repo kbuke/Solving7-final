@@ -4,11 +4,14 @@ import { AdminSections } from "../../../Components/AdminSections";
 import { PostProduct } from "./CRUD Actions/PostProduct";
 import { PostProductPillar } from "./Relations/PostProductPillar";
 import { DeleteProduct } from "./CRUD Actions/DeleteProduct";
+import { DeleteProductPillar } from "./Relations/DeleteProductPillar";
 
 export function AdminProducts({ appData, instanceButtons }) {
     const [productAction, setProductAction] = useState()
-    const [productPillarAction, setProductPillarAction] = useState()
     const [selectedProductId, setSelectedProductId] = useState()
+
+    const [productPillarAction, setProductPillarAction] = useState()
+    const [pillarId, setPillarId] = useState()
 
     const allProducts = appData?.allProducts
     const setAllProducts = appData?.setAllProducts
@@ -20,6 +23,8 @@ export function AdminProducts({ appData, instanceButtons }) {
 
     const allProductPillars = appData?.allProductPillars
     const setAllProductPillars = appData?.setAllProductPillars
+
+    console.log(`Pillar: ${pillarId}, Product: ${selectedProductId}`)
 
     return (
         <>
@@ -55,6 +60,7 @@ export function AdminProducts({ appData, instanceButtons }) {
                             relationalArray={pillarRelation}
                             relationalKey="pillar"
                             setRelationAction={setProductPillarAction}
+                            setRelationalId={setPillarId}
                         />
                     )
                 })}
@@ -84,6 +90,14 @@ export function AdminProducts({ appData, instanceButtons }) {
                     setProductPillarAction={setProductPillarAction}
                     isLoading={isLoading}
                     setIsLoading={setIsLoading}
+                />
+                : productPillarAction === "delete"
+                ? <DeleteProductPillar 
+                    pillarId={pillarId}
+                    productId={selectedProductId}
+                    setAllProductPillars={setAllProductPillars}
+                    setPillarProductAction={setProductPillarAction}
+                    allProductPillars={allProductPillars}
                 />
                 : null
             }
