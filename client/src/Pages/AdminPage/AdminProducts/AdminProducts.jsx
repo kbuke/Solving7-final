@@ -3,6 +3,7 @@ import { AdminInstance } from "../../../Components/AdminInstance";
 import { AdminSections } from "../../../Components/AdminSections";
 import { PostProduct } from "./CRUD Actions/PostProduct";
 import { PostProductPillar } from "./Relations/PostProductPillar";
+import { DeleteProduct } from "./CRUD Actions/DeleteProduct";
 
 export function AdminProducts({ appData, instanceButtons }) {
     const [productAction, setProductAction] = useState()
@@ -34,6 +35,9 @@ export function AdminProducts({ appData, instanceButtons }) {
                             id={product.id}
                             title="Product Name:"
                             hiddenValue={product.name}
+                            setInstanceAction={setProductAction}
+                            setSelectedId={setSelectedProductId}
+                            chosenId={product?.id}
                             instanceButtons={instanceButtons}
                             fields={[
                                 {
@@ -51,7 +55,6 @@ export function AdminProducts({ appData, instanceButtons }) {
                             relationalArray={pillarRelation}
                             relationalKey="pillar"
                             setRelationAction={setProductPillarAction}
-                            setSelectedId={setSelectedProductId}
                         />
                     )
                 })}
@@ -63,6 +66,12 @@ export function AdminProducts({ appData, instanceButtons }) {
                     setProductAction={setProductAction}
                     isLoading={isLoading}
                     setIsLoading={setIsLoading}
+                />
+                : productAction === "delete"
+                ? <DeleteProduct 
+                    selectedProductId={selectedProductId}
+                    setAllProducts={setAllProducts}
+                    setProductAction={setProductAction}
                 />
                 : null
             }

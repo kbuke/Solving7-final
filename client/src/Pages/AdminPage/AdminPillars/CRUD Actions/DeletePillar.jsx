@@ -4,14 +4,13 @@ import { useDelete } from "../../../../Hooks/useDelete"
 import {useFetch} from "../../../../Hooks/useFetch"
 
 export function DeletePillar({
-    pillarId,
     selectedPillarId,
     setAllPillars,
     setPillarAction
 }){
     const [selectedPillar, setSelectedPillar] = useState()
 
-    useFetch(`/api/pillars/${pillarId}`, setSelectedPillar, [pillarId])
+    useFetch(`/api/pillars/${selectedPillarId}`, setSelectedPillar, [selectedPillarId])
 
     const handleDeletePillar = () => {
         useDelete(

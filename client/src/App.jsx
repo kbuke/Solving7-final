@@ -16,7 +16,7 @@ function App() {
     useFetch("/api/socials", setAllSocials)
     useFetch("/api/session", setLoggedUser)
     useFetch("/api/pillars", setAllPillars) 
-    useFetch("/api/products", setAllProducts, [allProductPillars])
+    useFetch("/api/products", setAllProducts, [allProductPillars, allPillars])
     useFetch("/api/teams", setAllTeams)
     useFetch("/api/pillarproducts", setAllProductPillars)
 

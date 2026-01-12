@@ -60,7 +60,6 @@ export function AdminPillars({
                 />
                 : pillarAction === "delete"
                 ? <DeletePillar 
-                    pillarId={selectedPillarId}
                     selectedPillarId={selectedPillarId}
                     setAllPillars={setAllPillars}
                     setPillarAction={setPillarAction}
