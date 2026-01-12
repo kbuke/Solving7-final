@@ -11,11 +11,19 @@ export function AdminPage(){
 
     const instanceButtons = (
         specificButtonClass,
-        buttonText
+        buttonText,
+        setInstanceId,
+        instanceId,
+        setInstanceAction,
+        action
     ) => {
         return(
             <button
                 className={`instance-button ${specificButtonClass}`}
+                onClick={() => {
+                    setInstanceId(instanceId)
+                    setInstanceAction(action)
+                }}
             >
                 {buttonText}
             </button>

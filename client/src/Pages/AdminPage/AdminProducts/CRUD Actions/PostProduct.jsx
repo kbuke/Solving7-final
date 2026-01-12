@@ -56,6 +56,7 @@ export function PostProduct({
 
     return(
         <PopUp 
+            type={"post"}
             instanceType={"Product"}
             inputArray={newProductInputs}
             handleInstanceSubmit={handleProductPost}

@@ -45,6 +45,7 @@ export function PostTeam({
 
     return(
         <PopUp 
+            type={"post"}
             instanceType={"Team"}
             inputArray={newTeamInputs}
             handleInstanceSubmit={handleTeamPost}

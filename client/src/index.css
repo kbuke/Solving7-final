@@ -183,6 +183,11 @@
     @apply 
       bg-green-600
   }
+
+  .delete-button{
+    @apply
+      bg-red-600
+  }
 }
 
 @layer components{
@@ -199,6 +204,27 @@
 
 /* --------------------------- ADMIN --------------------------- */
 @layer components{
+  .admin-form{
+    @apply
+      bg-white
+      h-170 
+      w-83 
+      rounded
+      flex
+      flex-col
+      justify-center
+      items-center
+  }
+
+  .admin-title{
+    @apply
+      font-bold
+      uppercase
+      text-red-600
+      text-2xl
+      mb-4
+  }
+
   .admin-section-title{
     @apply 
       text-4xl

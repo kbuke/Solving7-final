@@ -56,6 +56,7 @@ export function PostPillar({
 
     return(
         <PopUp 
+            type={"post"}
             instanceType={"Pillar"}
             inputArray={newPillarInputs}
             handleInstanceSubmit={handlePillarPost}

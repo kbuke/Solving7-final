@@ -14,8 +14,6 @@ export function AdminTeams({
     const allTeams = appData?.allTeams
     const setAllTeams = appData?.setAllTeams
 
-    console.log(teamAction)
-
     return(
         <>
             <AdminSections 

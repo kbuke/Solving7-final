@@ -5,7 +5,8 @@ import ReactSelect from "react-select"
 export function TextInput({
     inputArray,
     errors,
-    register
+    register,
+    control
 }){
     return(
         inputArray.map((input, index) => (
@@ -28,12 +29,17 @@ export function TextInput({
                             <ReactSelect {...field} options={input.options} onChange={field.onChange} className=""/>
                         )}
                     />
-                    : <input 
-                        type={input?.type}
-                        placeholder={input?.placeholder}
-                        className={input?.className}
-                        {...register(input.name, input.validation)}
-                    />
+                    : <div>
+                        <label>
+                            {input.label}
+                        </label>
+                        <input 
+                            type={input?.type}
+                            placeholder={input?.placeholder}
+                            className={input?.className}
+                            {...register(input.name, input.validation)}
+                        />
+                    </div>
                 }
 
                 <FormGroup errorMessage={errors?.[input.name]?.message}/>

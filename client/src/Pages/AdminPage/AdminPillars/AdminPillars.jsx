@@ -2,14 +2,15 @@ import { useState } from "react";
 import { AdminInstance } from "../../../Components/AdminInstance";
 import { AdminSections } from "../../../Components/AdminSections";
 import { PostPillar } from "./CRUD Actions/PostPillar";
+import { DeletePillar } from "./CRUD Actions/DeletePillar";
 
 export function AdminPillars({ 
     appData, 
-    instanceButtons ,
     isLoading,
     setIsLoading
 }) {
     const [pillarAction, setPillarAction] = useState()
+    const [selectedPillarId, setSelectedPillarId] = useState()
 
     const allPillars = appData?.allPillars;
     const setAllPillars = appData?.setAllPillars
@@ -31,7 +32,9 @@ export function AdminPillars({
                         key={pillar.id}
                         title="Pillar Name:"
                         hiddenValue={pillar.pillar}
-                        instanceButtons={instanceButtons}
+                        setInstanceAction={setPillarAction}
+                        setSelectedId={setSelectedPillarId}
+                        chosenId={pillar?.id}
                         fields={[
                             {
                                 label: "Pillar Intro:",
@@ -54,6 +57,13 @@ export function AdminPillars({
                     setPillarAction={setPillarAction}
                     isLoading={isLoading}
                     setIsLoading={setIsLoading}
+                />
+                : pillarAction === "delete"
+                ? <DeletePillar 
+                    pillarId={selectedPillarId}
+                    selectedPillarId={selectedPillarId}
+                    setAllPillars={setAllPillars}
+                    setPillarAction={setPillarAction}
                 />
                 : null
             }

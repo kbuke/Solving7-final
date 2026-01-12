@@ -9,6 +9,7 @@ export function PostInstance({
     const {
         register,
         handleSubmit,
+        control,
         formState: {errors}
     } = useForm()
 
@@ -25,6 +26,7 @@ export function PostInstance({
                 inputArray={inputArray}
                 errors={errors}
                 register={register}
+                control={control}
             />
 
             <button className="submit-button hover:-translate-y-2">
