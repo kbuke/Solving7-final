@@ -6,7 +6,7 @@ import { PostProductPillar } from "./Relations/PostProductPillar";
 import { DeleteProduct } from "./CRUD Actions/DeleteProduct";
 import { DeleteProductPillar } from "./Relations/DeleteProductPillar";
 
-export function AdminProducts({ appData, instanceButtons }) {
+export function AdminProducts({ appData }) {
     const [productAction, setProductAction] = useState()
     const [selectedProductId, setSelectedProductId] = useState()
 
@@ -23,8 +23,6 @@ export function AdminProducts({ appData, instanceButtons }) {
 
     const allProductPillars = appData?.allProductPillars
     const setAllProductPillars = appData?.setAllProductPillars
-
-    console.log(`Pillar: ${pillarId}, Product: ${selectedProductId}`)
 
     return (
         <>
@@ -43,7 +41,6 @@ export function AdminProducts({ appData, instanceButtons }) {
                             setInstanceAction={setProductAction}
                             setSelectedId={setSelectedProductId}
                             chosenId={product?.id}
-                            instanceButtons={instanceButtons}
                             fields={[
                                 {
                                     label: "Product Info:",

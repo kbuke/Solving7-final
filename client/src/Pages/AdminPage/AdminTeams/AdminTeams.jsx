@@ -2,14 +2,15 @@ import { useState } from "react"
 import { AdminInstance } from "../../../Components/AdminInstance"
 import { AdminSections } from "../../../Components/AdminSections"
 import { PostTeam } from "./CRUD Actions/PostTeam"
+import { DeleteTeam } from "./CRUD Actions/DeleteTeam"
 
 export function AdminTeams({
     appData,
-    instanceButtons,
     isLoading,
     setIsLoading
 }){
     const [teamAction, setTeamAction] = useState()
+    const [selectedTeamId, setSelectedTeamId] = useState()
 
     const allTeams = appData?.allTeams
     const setAllTeams = appData?.setAllTeams
@@ -25,7 +26,9 @@ export function AdminTeams({
                         key={team.id}
                         title="Team Name:"
                         hiddenValue={team.name}
-                        instanceButtons={instanceButtons}
+                        setInstanceAction={setTeamAction}
+                        setSelectedId={setSelectedTeamId}
+                        chosenId={team?.id}
                         fields={[
                             {
                                 label: "Pillar Intro:",
@@ -43,6 +46,12 @@ export function AdminTeams({
                     setTeamAction={setTeamAction}
                     isLoading={isLoading}
                     setIsLoading={setIsLoading}
+                />
+                : teamAction === "delete"
+                ? <DeleteTeam 
+                    selectedTeamId={selectedTeamId}
+                    setAllTeams={setAllTeams}
+                    setTeamAction={setTeamAction}
                 />
                 : null
             }
