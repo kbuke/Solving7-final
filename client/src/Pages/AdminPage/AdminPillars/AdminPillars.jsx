@@ -3,6 +3,8 @@ import { AdminInstance } from "../../../Components/AdminInstance";
 import { AdminSections } from "../../../Components/AdminSections";
 import { PostPillar } from "./CRUD Actions/PostPillar";
 import { DeletePillar } from "./CRUD Actions/DeletePillar";
+import { useFetch } from "../../../Hooks/useFetch";
+import { PatchPillar } from "./CRUD Actions/PatchPillar";
 
 export function AdminPillars({ 
     appData, 
@@ -11,6 +13,9 @@ export function AdminPillars({
 }) {
     const [pillarAction, setPillarAction] = useState()
     const [selectedPillarId, setSelectedPillarId] = useState()
+    const [selectedPillar, setSelectedPillar] = useState()
+
+    useFetch(`/api/pillars/${selectedPillarId}`, setSelectedPillar, [selectedPillarId])
 
     const allPillars = appData?.allPillars;
     const setAllPillars = appData?.setAllPillars
@@ -18,6 +23,38 @@ export function AdminPillars({
     const currentPillars = allPillars.length
 
     const noOfPillarsAllowed = 7
+
+    const pillarInputs = [
+        {
+            type: "text",
+            placeholder: "Please enter pillar goal",
+            className: "text-input-container",
+            name: "pillar",
+            validation: {
+                required: "Please enter the pillar title."
+            }
+        },
+
+        {
+            type: "textarea",
+            placeholder: "Please enter pillars information",
+            className: "pillar-text-area",
+            name: "pillarIntro",
+            validation: {
+                required: "Please enter pillar intro"
+            }
+        },
+
+        {
+            type: "text",
+            placeholder: "Please enter image link for pillar",
+            className: "text-input-container",
+            name: "pillarImg",
+            validation: {
+                required: "Please enter image for pillar"
+            }
+        }
+    ]
 
     return (
         <>
@@ -57,12 +94,22 @@ export function AdminPillars({
                     setPillarAction={setPillarAction}
                     isLoading={isLoading}
                     setIsLoading={setIsLoading}
+                    pillarInputs={pillarInputs}
                 />
                 : pillarAction === "delete"
                 ? <DeletePillar 
                     selectedPillarId={selectedPillarId}
                     setAllPillars={setAllPillars}
                     setPillarAction={setPillarAction}
+                    selectedPillar={selectedPillar}
+                />
+                : pillarAction === "patch"
+                ? <PatchPillar 
+                    selectedPillarId={selectedPillarId}
+                    setAllPillars={setAllPillars}
+                    setPillarAction={setPillarAction}
+                    selectedPillar={selectedPillar}
+                    pillarInputs={pillarInputs}
                 />
                 : null
             }

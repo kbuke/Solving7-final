@@ -1,4 +1,5 @@
 import { DeleteInstance } from "./DeleteInstance";
+import { PatchInstance } from "./PatchInstance";
 import { PostInstance } from "./PostInstance";
 
 export function PopUp({
@@ -6,7 +7,9 @@ export function PopUp({
     instanceType,
     inputArray,
     handleInstanceSubmit,
-    instanceName
+    instanceName,
+    patchReset,
+    selectedInstance
 }){
     return(
         <div
@@ -23,6 +26,15 @@ export function PopUp({
                     handleInstanceDelete={handleInstanceSubmit}
                     instanceName={instanceName}
                     instanceType={instanceType}
+                />
+                : type === "patch"
+                ? <PatchInstance 
+                    instanceType={instanceType}
+                    instanceName={instanceName}
+                    patchReset={patchReset}
+                    selectedInstance={selectedInstance}
+                    handleInstancePatch={handleInstanceSubmit}
+                    inputArray={inputArray}
                 />
                 : null
             }
