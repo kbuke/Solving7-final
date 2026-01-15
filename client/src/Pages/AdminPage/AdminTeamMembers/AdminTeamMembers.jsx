@@ -3,6 +3,7 @@ import { useFetch } from "../../../Hooks/useFetch";
 import { AdminSections } from "../../../Components/AdminSections";
 import { AdminInstance } from "../../../Components/AdminInstance";
 import { PostTeamMember } from "./CRUD Actions/PostTeamMember";
+import { DeleteTeamMember } from "./CRUD Actions/DeleteTeamMember";
 
 export function AdminTeamMembers({
     appData,
@@ -63,6 +64,13 @@ export function AdminTeamMembers({
                     setTeamMemberAction={setTeamMemberAction}
                     isLoading={appData?.isLoading}
                     setIsLoading={appData?.setIsLoading}
+                />
+                : teamMemberAction === "delete"
+                ? <DeleteTeamMember 
+                    selectedTeamMemberId={selectedTeamMemberId}
+                    setAllTeamMembers={setAllTeamMembers}
+                    setTeamMemberAction={setTeamMemberAction}
+                    selectedTeamMember={selectedTeamMember}
                 />
                 : null
             }

@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { useFetch } from "../../../../Hooks/useFetch";
 import { useDelete } from "../../../../Hooks/useDelete";
 import { PopUp } from "../../../../Components/PopUp";
 
