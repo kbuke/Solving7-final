@@ -7,6 +7,7 @@ export function DeleteTeamMember({
     setTeamMemberAction,
     selectedTeamMember
 }){
+    // Ensure that when deleting a user that you must enter the deleted users password to confirm
     const handleDeleteTeamMember = () => {
         useDelete(
             `/api/members/${selectedTeamMemberId}`,

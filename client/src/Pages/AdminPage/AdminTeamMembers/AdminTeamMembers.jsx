@@ -4,6 +4,8 @@ import { AdminSections } from "../../../Components/AdminSections";
 import { AdminInstance } from "../../../Components/AdminInstance";
 import { PostTeamMember } from "./CRUD Actions/PostTeamMember";
 import { DeleteTeamMember } from "./CRUD Actions/DeleteTeamMember";
+import { PostMemberTeam } from "./Relations/PostMemberTeam";
+import { DeleteMemberTeam } from "./Relations/DeleteMemberTeam";
 
 export function AdminTeamMembers({
     appData,
@@ -13,8 +15,14 @@ export function AdminTeamMembers({
     const [selectedTeamMember, setSelectedTeamMember] = useState()
     const [selectedTeamMemberId, setSelectedTeamMemberId] = useState()
 
+    const [memberTeamsAction, setMemberTeamsAction] = useState()
+    const [teamId, setTeamId] = useState()
+
     const allTeamMembers = appData?.allTeamMembers
     const setAllTeamMembers = appData?.setAllTeamMembers
+    const allTeams = appData?.allTeams
+    const allMemberTeams = appData?.allMemberTeams
+    const setAllMemberTeams = appData?.setAllMemberTeams
 
     useFetch(`api/members/${selectedTeamMemberId}`, setSelectedTeamMember, [selectedTeamMemberId])
 
@@ -25,6 +33,7 @@ export function AdminTeamMembers({
                 sectionTitle={"Team Members"}
                 setInstanceAction={setTeamMemberAction}
                 table={allTeamMembers?.map((member) => {
+                    const membersTeams = member?.teams
                     return(
                         <AdminInstance 
                             key={member?.id}
@@ -53,6 +62,11 @@ export function AdminTeamMembers({
                                     value: member?.email
                                 }
                             ]}
+                            relational={"Members' Teams"}
+                            relationalArray={membersTeams}
+                            relationalKey={"name"}
+                            setRelationAction={setMemberTeamsAction}
+                            setRelationalId={setTeamId}
                         />
                     )
                 })}
@@ -71,6 +85,26 @@ export function AdminTeamMembers({
                     setAllTeamMembers={setAllTeamMembers}
                     setTeamMemberAction={setTeamMemberAction}
                     selectedTeamMember={selectedTeamMember}
+                />
+                : null
+            }
+
+            {memberTeamsAction === "post"
+                ? <PostMemberTeam 
+                    allTeams={allTeams}
+                    selectedMemberId={selectedTeamMemberId}
+                    setAllMemberTeams={setAllMemberTeams}
+                    setMemberTeamsAction={setMemberTeamsAction}
+                    isLoading={appData?.isLoading}
+                    setIsLoading={appData?.setIsLoading}
+                />
+                : memberTeamsAction === "delete"
+                ? <DeleteMemberTeam 
+                    teamId={teamId}
+                    memberId={selectedTeamMemberId}
+                    allMemberTeams={allMemberTeams}
+                    setAllMemberTeams={setAllMemberTeams}
+                    setMemberTeamAction={setMemberTeamsAction}
                 />
                 : null
             }

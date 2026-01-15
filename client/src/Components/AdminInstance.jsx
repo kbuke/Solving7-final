@@ -16,6 +16,7 @@ export function AdminInstance({
     chosenRelationalId,
     setInstanceAction
 }) {
+    console.log(relationalArray)
     const instanceButtons = (type) => {
         return(
             <button

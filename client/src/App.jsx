@@ -12,6 +12,7 @@ function App() {
     const [allTeams, setAllTeams] = useState([])
     const [allTeamMembers, setAllTeamMembers] = useState([])
     const [allProductPillars, setAllProductPillars] = useState([])
+    const [allMemberTeams, setAllMemberTeams] = useState([])
 
     useFetch("/api/emails", setAllEmails)
     useFetch("/api/socials", setAllSocials)
@@ -20,7 +21,8 @@ function App() {
     useFetch("/api/products", setAllProducts, [allProductPillars, allPillars])
     useFetch("/api/teams", setAllTeams)
     useFetch("/api/pillarproducts", setAllProductPillars)
-    useFetch("/api/members", setAllTeamMembers)
+    useFetch("/api/members", setAllTeamMembers, [allMemberTeams, allTeams])
+    useFetch("/api/memberteams", setAllMemberTeams)
 
 
     const outletContext = {
@@ -32,7 +34,8 @@ function App() {
         allProducts, setAllProducts,
         allTeams, setAllTeams,
         allProductPillars, setAllProductPillars,
-        allTeamMembers, setAllTeamMembers
+        allTeamMembers, setAllTeamMembers,
+        allMemberTeams, setAllMemberTeams
     }
 
     return(

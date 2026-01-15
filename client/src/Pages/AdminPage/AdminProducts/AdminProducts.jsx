@@ -81,6 +81,13 @@ export function AdminProducts({ appData }) {
                     setAllProducts={setAllProducts}
                     setProductAction={setProductAction}
                 />
+                : productAction === "patch"
+                ? <PatchProduct 
+                    selectedProductId={selectedProductId}
+                    setAllProducts={setAllProducts}
+                    setProductAction={setProductAction}
+                    selectedProduct={selectedProduct}
+                />
                 : null
             }
 
@@ -100,13 +107,6 @@ export function AdminProducts({ appData }) {
                     setAllProductPillars={setAllProductPillars}
                     setPillarProductAction={setProductPillarAction}
                     allProductPillars={allProductPillars}
-                    selectedProduct={selectedProduct}
-                />
-                : productAction === "patch"
-                ? <PatchProduct 
-                    selectedProductId={selectedProductId}
-                    setAllProducts={setAllProducts}
-                    setProductAction={setProductAction}
                     selectedProduct={selectedProduct}
                 />
                 : null
