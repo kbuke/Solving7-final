@@ -5,9 +5,12 @@ import { PostProduct } from "./CRUD Actions/PostProduct";
 import { PostProductPillar } from "./Relations/PostProductPillar";
 import { DeleteProduct } from "./CRUD Actions/DeleteProduct";
 import { DeleteProductPillar } from "./Relations/DeleteProductPillar";
+import { PatchProduct } from "./CRUD Actions/PatchProduct";
+import { useFetch } from "../../../Hooks/useFetch";
 
 export function AdminProducts({ appData }) {
     const [productAction, setProductAction] = useState()
+    const [selectedProduct, setSelectedProduct] = useState()
     const [selectedProductId, setSelectedProductId] = useState()
 
     const [productPillarAction, setProductPillarAction] = useState()
@@ -23,6 +26,8 @@ export function AdminProducts({ appData }) {
 
     const allProductPillars = appData?.allProductPillars
     const setAllProductPillars = appData?.setAllProductPillars
+
+    useFetch(`/api/products/${selectedProductId}`, setSelectedProduct, [selectedProductId])
 
     return (
         <>
@@ -95,6 +100,14 @@ export function AdminProducts({ appData }) {
                     setAllProductPillars={setAllProductPillars}
                     setPillarProductAction={setProductPillarAction}
                     allProductPillars={allProductPillars}
+                    selectedProduct={selectedProduct}
+                />
+                : productAction === "patch"
+                ? <PatchProduct 
+                    selectedProductId={selectedProductId}
+                    setAllProducts={setAllProducts}
+                    setProductAction={setProductAction}
+                    selectedProduct={selectedProduct}
                 />
                 : null
             }

@@ -2,6 +2,7 @@ import { useOutletContext } from "react-router";
 import { AdminPillars } from "./AdminPillars/AdminPillars";
 import { AdminProducts } from "./AdminProducts/AdminProducts";
 import { AdminTeams } from "./AdminTeams/AdminTeams";
+import { AdminTeamMembers } from "./AdminTeamMembers/AdminTeamMembers";
 
 export function AdminPage(){
     const appData = useOutletContext()
@@ -58,6 +59,11 @@ export function AdminPage(){
                 instanceButtons={instanceButtons}
                 isLoading={isLoading}
                 setIsLoading={setIsLoading}
+            />
+
+            <AdminTeamMembers 
+                appData={appData}
+                instanceButtons={instanceButtons}
             />
         </div>
     )

@@ -1,12 +1,12 @@
 import { PopUp } from "../../../../Components/PopUp"
 import {usePatch} from "../../../../Hooks/usePatch"
+import { PillarInputs } from "../PillarComponent/PillarInputs"
 
 export function PatchPillar({
     selectedPillarId,
     setAllPillars,
     setPillarAction,
-    selectedPillar,
-    pillarInputs
+    selectedPillar
 }){
     // Define object for patch to reset values to their existing (pre-patch)
     const patchPillarObject = [
@@ -46,7 +46,7 @@ export function PatchPillar({
             instanceName={selectedPillar?.pillar}
             patchReset = {patchPillarObject}
             selectedInstance={selectedPillar}
-            inputArray={pillarInputs}
+            inputArray={PillarInputs()}
             handleInstanceSubmit={handlePillarEdit}
         />
     )

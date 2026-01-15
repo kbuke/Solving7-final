@@ -3,6 +3,8 @@ import { AdminInstance } from "../../../Components/AdminInstance"
 import { AdminSections } from "../../../Components/AdminSections"
 import { PostTeam } from "./CRUD Actions/PostTeam"
 import { DeleteTeam } from "./CRUD Actions/DeleteTeam"
+import { PatchTeam } from "./CRUD Actions/PatchTeam"
+import { useFetch } from "../../../Hooks/useFetch"
 
 export function AdminTeams({
     appData,
@@ -11,6 +13,9 @@ export function AdminTeams({
 }){
     const [teamAction, setTeamAction] = useState()
     const [selectedTeamId, setSelectedTeamId] = useState()
+    const [selectedTeam, setSelectedTeam] = useState()
+
+    useFetch(`/api/teams/${selectedTeamId}`, setSelectedTeam, [selectedTeamId])
 
     const allTeams = appData?.allTeams
     const setAllTeams = appData?.setAllTeams
@@ -52,6 +57,14 @@ export function AdminTeams({
                     selectedTeamId={selectedTeamId}
                     setAllTeams={setAllTeams}
                     setTeamAction={setTeamAction}
+                    selectedTeam={selectedTeam}
+                />
+                : teamAction === "patch"
+                ? <PatchTeam 
+                    selectedTeamId={selectedTeamId}
+                    setAllTeams={setAllTeams}
+                    setTeamAction={setTeamAction}
+                    selectedTeam={selectedTeam}
                 />
                 : null
             }

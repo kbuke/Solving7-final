@@ -24,38 +24,6 @@ export function AdminPillars({
 
     const noOfPillarsAllowed = 7
 
-    const pillarInputs = [
-        {
-            type: "text",
-            placeholder: "Please enter pillar goal",
-            className: "text-input-container",
-            name: "pillar",
-            validation: {
-                required: "Please enter the pillar title."
-            }
-        },
-
-        {
-            type: "textarea",
-            placeholder: "Please enter pillars information",
-            className: "pillar-text-area",
-            name: "pillarIntro",
-            validation: {
-                required: "Please enter pillar intro"
-            }
-        },
-
-        {
-            type: "text",
-            placeholder: "Please enter image link for pillar",
-            className: "text-input-container",
-            name: "pillarImg",
-            validation: {
-                required: "Please enter image for pillar"
-            }
-        }
-    ]
-
     return (
         <>
             <AdminSections
@@ -94,7 +62,6 @@ export function AdminPillars({
                     setPillarAction={setPillarAction}
                     isLoading={isLoading}
                     setIsLoading={setIsLoading}
-                    pillarInputs={pillarInputs}
                 />
                 : pillarAction === "delete"
                 ? <DeletePillar 
@@ -109,7 +76,6 @@ export function AdminPillars({
                     setAllPillars={setAllPillars}
                     setPillarAction={setPillarAction}
                     selectedPillar={selectedPillar}
-                    pillarInputs={pillarInputs}
                 />
                 : null
             }

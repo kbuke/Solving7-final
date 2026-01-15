@@ -8,7 +8,7 @@ export function PatchInstance({
     patchReset,
     inputArray,
     selectedInstance,
-    handleInstancePatch
+    handleInstancePatch,
 }){
     const {
             register,

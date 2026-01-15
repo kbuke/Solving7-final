@@ -6,12 +6,9 @@ import { PopUp } from "../../../../Components/PopUp";
 export function DeleteProduct({
     selectedProductId,
     setAllProducts,
-    setProductAction
+    setProductAction,
+    selectedProduct
 }){
-    const [selectedProduct, setSelectedProduct] = useState()
-
-    useFetch(`/api/products/${selectedProductId}`, setSelectedProduct, [selectedProductId])
-
     const handleDeleteProduct = () => {
         useDelete(
             `/api/products/${selectedProductId}`,
