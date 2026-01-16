@@ -4,6 +4,7 @@ import { AdminSections } from "../../../Components/AdminSections";
 import { AdminInstance } from "../../../Components/AdminInstance";
 import { PostNewsArticle } from "./CRUD Actions/PostNewsArticle";
 import { PatchNewsArticle } from "./CRUD Actions/PatchNewsArticle";
+import { DeleteNewsArticle } from "./CRUD Actions/DeleteNewsArticle";
 
 export function AdminNews({
     appData
@@ -63,6 +64,13 @@ export function AdminNews({
                 />
                 : newsAction === "patch"
                 ? <PatchNewsArticle 
+                    selectedNewsId={selectedNewsId}
+                    setAllNews={setAllNews}
+                    setNewsAction={setNewsAction}
+                    selectedNews={selectedNews}
+                />
+                : newsAction === "delete"
+                ? <DeleteNewsArticle 
                     selectedNewsId={selectedNewsId}
                     setAllNews={setAllNews}
                     setNewsAction={setNewsAction}
