@@ -1,7 +1,5 @@
-import { useState } from "react"
 import { PopUp } from "../../../../Components/PopUp"
 import { useDelete } from "../../../../Hooks/useDelete"
-import {useFetch} from "../../../../Hooks/useFetch"
 
 export function DeletePillar({
     selectedPillarId,

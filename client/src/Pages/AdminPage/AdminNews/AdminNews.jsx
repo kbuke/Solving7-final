@@ -3,6 +3,7 @@ import { useFetch } from "../../../Hooks/useFetch";
 import { AdminSections } from "../../../Components/AdminSections";
 import { AdminInstance } from "../../../Components/AdminInstance";
 import { PostNewsArticle } from "./CRUD Actions/PostNewsArticle";
+import { PatchNewsArticle } from "./CRUD Actions/PatchNewsArticle";
 
 export function AdminNews({
     appData
@@ -59,6 +60,13 @@ export function AdminNews({
                     setNewsAction={setNewsAction}
                     isLoading={appData?.isLoading}
                     setIsLoading={appData?.setIsLoading}
+                />
+                : newsAction === "patch"
+                ? <PatchNewsArticle 
+                    selectedNewsId={selectedNewsId}
+                    setAllNews={setAllNews}
+                    setNewsAction={setNewsAction}
+                    selectedNews={selectedNews}
                 />
                 : null
             }
