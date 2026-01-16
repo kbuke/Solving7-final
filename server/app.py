@@ -10,6 +10,7 @@ from resources.Intro import SpecificIntro
 from resources.Email import EmailList
 from resources.PillarProducts import PillarProductsList, SpecificPillarProductsList
 from resources.Socials import SocialsList, SpecificSocial
+from resources.News import NewsList, SpecificNews
 
 from resources.Login import Login
 from resources.Logout import Logout
@@ -42,6 +43,9 @@ api.add_resource(SpecificPillarProductsList, "/pillarproducts/<int:id>")
 
 api.add_resource(SocialsList, "/socials")
 api.add_resource(SpecificSocial, "/socials/<int:id>")
+
+api.add_resource(NewsList, "/news")
+api.add_resource(SpecificNews, "/news/<int:id>")
 
 api.add_resource(CheckSession, "/session")
 

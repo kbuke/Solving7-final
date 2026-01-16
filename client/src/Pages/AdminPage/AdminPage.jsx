@@ -3,6 +3,7 @@ import { AdminPillars } from "./AdminPillars/AdminPillars";
 import { AdminProducts } from "./AdminProducts/AdminProducts";
 import { AdminTeams } from "./AdminTeams/AdminTeams";
 import { AdminTeamMembers } from "./AdminTeamMembers/AdminTeamMembers";
+import { AdminNews } from "./AdminNews/AdminNews";
 
 export function AdminPage(){
     const appData = useOutletContext()
@@ -64,6 +65,10 @@ export function AdminPage(){
             <AdminTeamMembers 
                 appData={appData}
                 instanceButtons={instanceButtons}
+            />
+
+            <AdminNews 
+                appData={appData}
             />
         </div>
     )

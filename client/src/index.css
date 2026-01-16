@@ -269,7 +269,8 @@
   .pillar-text-area,
   .team-text-area,
   .product-text-area,
-  .member-text-area{
+  .member-text-area,
+  .news-textarea{
     @apply 
       w-80
       border

@@ -6,8 +6,7 @@ export function PostPillar({
     setAllPillars,
     setPillarAction,
     isLoading,
-    setIsLoading,
-    pillarInputs
+    setIsLoading
 }){
 
     const handlePillarPost = (formData) => {

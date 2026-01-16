@@ -6,6 +6,7 @@ import { PostTeamMember } from "./CRUD Actions/PostTeamMember";
 import { DeleteTeamMember } from "./CRUD Actions/DeleteTeamMember";
 import { PostMemberTeam } from "./Relations/PostMemberTeam";
 import { DeleteMemberTeam } from "./Relations/DeleteMemberTeam";
+import { PatchTeamMember } from "./CRUD Actions/PatchTeamMember";
 
 export function AdminTeamMembers({
     appData,
@@ -23,6 +24,8 @@ export function AdminTeamMembers({
     const allTeams = appData?.allTeams
     const allMemberTeams = appData?.allMemberTeams
     const setAllMemberTeams = appData?.setAllMemberTeams
+
+    console.log(teamMemberAction)
 
     useFetch(`api/members/${selectedTeamMemberId}`, setSelectedTeamMember, [selectedTeamMemberId])
 
@@ -85,6 +88,13 @@ export function AdminTeamMembers({
                     setAllTeamMembers={setAllTeamMembers}
                     setTeamMemberAction={setTeamMemberAction}
                     selectedTeamMember={selectedTeamMember}
+                />
+                : teamMemberAction === "patch"
+                ? <PatchTeamMember 
+                    selectedMemberId={selectedTeamMemberId}
+                    setAllMembers={setAllTeamMembers}
+                    setMemberAction={setTeamMemberAction}
+                    selectedMember={selectedTeamMember}
                 />
                 : null
             }
