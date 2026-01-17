@@ -279,3 +279,71 @@
       h-40
   }
 }
+
+/* --------------------------- Home Section ---------------------------  */
+@layer components{
+  .home-sections {
+    @apply
+      relative
+      w-full 
+      p-2 
+      pb-22
+  }
+
+  .bg-green-section{
+    @apply 
+      bg-[#bff1b2]
+  }
+
+  .home-section-header{
+    @apply 
+      text-center
+      uppercase
+      text-3xl
+      font-bold tracking-wide
+      mb-2
+  }
+}
+
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-slide {
+  flex: 0 0 80%;
+  background-size: contain;
+  background-position: center;
+  margin: 0 10%;
+}
+
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ccc;
+  border: none;
+  cursor: pointer;
+}
+
+.dot.active {
+  background: #2f7d32;
+}
+
+
