@@ -4,6 +4,7 @@ import { useFetch } from "../../../Hooks/useFetch";
 import { AdminInstance } from "../../../Components/AdminInstance";
 import { PostSustainableGoal } from "./CRUD Actions/PostSustainableGoal";
 import { DeleteSustainableGoal } from "./CRUD Actions/DeleteSustainableGoal";
+import { PatchSustainableGoal } from "./CRUD Actions/PatchSustainableGoal";
 
 export function AdminSustainableGoals({
     appData
@@ -60,6 +61,13 @@ export function AdminSustainableGoals({
                 />
                 : sustainableAction === "delete"
                 ? <DeleteSustainableGoal 
+                    sustainableId={sustainableId}
+                    setAllSustainableGoals={setAllSustainableGoals}
+                    setSustainableAction={setSustainableAction}
+                    selectedSustainableGoal={selectedSustainableGoal}
+                />
+                : sustainableAction === "patch"
+                ? <PatchSustainableGoal 
                     sustainableId={sustainableId}
                     setAllSustainableGoals={setAllSustainableGoals}
                     setSustainableAction={setSustainableAction}
