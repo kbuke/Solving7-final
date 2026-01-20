@@ -6,8 +6,7 @@ export function PostProduct({
     setAllProducts,
     setProductAction,
     isLoading,
-    setIsLoading,
-    pillarOptions
+    setIsLoading
 }){
     
     const handleProductPost = (formData) => {

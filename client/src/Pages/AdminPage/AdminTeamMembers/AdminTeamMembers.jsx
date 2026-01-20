@@ -4,55 +4,41 @@ import { AdminSections } from "../../../Components/AdminSections";
 import { AdminInstance } from "../../../Components/AdminInstance";
 import { PostTeamMember } from "./CRUD Actions/PostTeamMember";
 import { DeleteTeamMember } from "./CRUD Actions/DeleteTeamMember";
-import { PostMemberTeam } from "./Relations/PostMemberTeam";
-import { DeleteMemberTeam } from "./Relations/DeleteMemberTeam";
 import { PatchTeamMember } from "./CRUD Actions/PatchTeamMember";
+import { MemberTeams } from "./Relations/MemberTeams";
 
 export function AdminTeamMembers({
     appData,
-    instanceButtons
+    openRelation,
+    setOpenRelation
 }){
     const [teamMemberAction, setTeamMemberAction] = useState()
     const [selectedTeamMember, setSelectedTeamMember] = useState()
     const [selectedTeamMemberId, setSelectedTeamMemberId] = useState()
 
-    const [memberTeamsAction, setMemberTeamsAction] = useState()
-    const [teamId, setTeamId] = useState()
-
     const allTeamMembers = appData?.allTeamMembers
     const setAllTeamMembers = appData?.setAllTeamMembers
-    const allTeams = appData?.allTeams
-    const allMemberTeams = appData?.allMemberTeams
-    const setAllMemberTeams = appData?.setAllMemberTeams
-
-    console.log(teamMemberAction)
 
     useFetch(`api/members/${selectedTeamMemberId}`, setSelectedTeamMember, [selectedTeamMemberId])
 
     return(
         <>
             <AdminSections 
-                bgColour={"bg-white"}
+                bgColour={"white"}
                 sectionTitle={"Team Members"}
                 setInstanceAction={setTeamMemberAction}
-                table={allTeamMembers?.map((member) => {
-                    const membersTeams = member?.teams
+                table={allTeamMembers?.map((member, index) => {
                     return(
                         <AdminInstance 
                             key={member?.id}
-                            id={member?.id}
+                            index={index}
+                            total={allTeamMembers.length}
                             title={"Member Name: "}
                             hiddenValue={member?.name}
                             setInstanceAction={setTeamMemberAction}
                             setSelectedId={setSelectedTeamMemberId}
                             chosenId={member?.id}
                             fields={[
-                                {
-                                    label: "Member Image: ",
-                                    type: "img",
-                                    value: member?.img
-                                },
-
                                 {
                                     label: "Member Intro:",
                                     type: "text",
@@ -65,11 +51,8 @@ export function AdminTeamMembers({
                                     value: member?.email
                                 }
                             ]}
-                            relational={"Members' Teams"}
-                            relationalArray={membersTeams}
-                            relationalKey={"name"}
-                            setRelationAction={setMemberTeamsAction}
-                            setRelationalId={setTeamId}
+                            relational={"Members Teams"}
+                            setSelectedRelation={setOpenRelation}
                         />
                     )
                 })}
@@ -99,22 +82,13 @@ export function AdminTeamMembers({
                 : null
             }
 
-            {memberTeamsAction === "post"
-                ? <PostMemberTeam 
-                    allTeams={allTeams}
-                    selectedMemberId={selectedTeamMemberId}
-                    setAllMemberTeams={setAllMemberTeams}
-                    setMemberTeamsAction={setMemberTeamsAction}
-                    isLoading={appData?.isLoading}
-                    setIsLoading={appData?.setIsLoading}
-                />
-                : memberTeamsAction === "delete"
-                ? <DeleteMemberTeam 
-                    teamId={teamId}
-                    memberId={selectedTeamMemberId}
-                    allMemberTeams={allMemberTeams}
-                    setAllMemberTeams={setAllMemberTeams}
-                    setMemberTeamAction={setMemberTeamsAction}
+            {openRelation === "Members Teams" && selectedTeamMember
+                ? <MemberTeams 
+                    appData={appData}
+                    selectedTeamMemberId={selectedTeamMemberId}
+                    setSelectedTeamMemberId={setSelectedTeamMemberId}
+                    memberName={selectedTeamMember?.name}
+                    selectedTeamMember={selectedTeamMember}
                 />
                 : null
             }

@@ -4,7 +4,7 @@ export function EmailInputs(){
             {
                 type: "text",
                 placeholder: "Please enter your email address",
-                className: "text-input-container",
+                className: "email-input-container",
                 name: "senderEmail",
                 validation: {
                     required: "Please enter your email address"
@@ -14,7 +14,7 @@ export function EmailInputs(){
             {
                 type: "text",
                 placeholder: "Please enter subject of your email",
-                className: "text-input-container",
+                className: "email-input-container",
                 name: "emailSubject",
                 validation: {
                     required: "Please enter email subject"
@@ -24,7 +24,7 @@ export function EmailInputs(){
             {
                 type: "textarea",
                 placeholder: "Please enter email message",
-                className: "text-input-container",
+                className: "email-input-textarea",
                 name: "emailMessage",
                 validation: {
                     required: "Please enter email message"

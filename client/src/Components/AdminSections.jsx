@@ -1,4 +1,5 @@
 import { AdminTable } from "./AdminTables"
+import { WaveBg } from "./WaveBg"
 
 export function AdminSections({
     bgColour,
@@ -9,7 +10,7 @@ export function AdminSections({
     table
 }){
     return(
-        <div className={bgColour}>
+        <div className={`admin-section ${bgColour === "green" ? "bg-white" : "bg-[#bff1b2]"}`}>
             <div
                 className="flex flex-col justify-center items-center"
             >
@@ -31,6 +32,8 @@ export function AdminSections({
             </div>
 
             {table}
+            
+            <WaveBg colour={bgColour}/>
         </div>
     )
 }

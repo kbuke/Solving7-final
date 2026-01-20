@@ -10,31 +10,14 @@ import { Contact } from "./HomePg/Contact"
 export function HomePg(){
     const appData = useOutletContext()
 
-    const waves = (colour) => {
-        return(
-            <img
-                src={colour === "white" ? whiteLayer : greenLayer} 
-                alt={`${colour}-wave`}
-                className="
-                    absolute bottom-0 left-0 w-full translate-y-1/10 z-0 pointer-events-none
-                "
-            />
-        )
-    }
-
     return(
         <div>
-            <Hero 
-                wave={waves}
-            />
+            <Hero />
 
-            <Info 
-                wave={waves}
-            />
+            <Info />
 
             <Pillars 
                 appData={appData}
-                wave={waves}
             />
 
             <Articles />

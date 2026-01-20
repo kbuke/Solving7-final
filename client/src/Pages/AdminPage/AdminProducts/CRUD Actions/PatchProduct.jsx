@@ -26,10 +26,11 @@ export function PatchProduct({
     ]
 
     const handleProductEdit = (formData) => {
+        console.log(formData)
         const patchData = {
             productName: formData?.productName,
             productImg: formData?.productImg,
-            productIntro: formData?.productIntro
+            productInfo: formData?.productInfo
         }
 
         usePatch(

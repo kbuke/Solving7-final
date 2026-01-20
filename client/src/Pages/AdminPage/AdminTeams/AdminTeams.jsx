@@ -23,12 +23,14 @@ export function AdminTeams({
     return(
         <>
             <AdminSections 
-                bgColour="bg-blue-200/40"
+                bgColour="green"
                 sectionTitle={"Teams"}
                 setInstanceAction={setTeamAction}
-                table={allTeams?.map((team) => (
+                table={allTeams?.map((team, index) => (
                     <AdminInstance 
                         key={team.id}
+                        index={index}
+                        total={allTeams.length}
                         title="Team Name:"
                         hiddenValue={team.name}
                         setInstanceAction={setTeamAction}

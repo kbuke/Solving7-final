@@ -1,8 +1,31 @@
+import { WaveBg } from "../../../Components/WaveBg"
 import deskImg from "../../../Resources/deskImg.jpeg"
+import educationLogo from "../../../Resources/educationLogo.png"
+import housingLogo from "../../../Resources/housingLogo.png"
+import recycleLogo from "../../../Resources/recycleLogo.png"
 
-export function Info({
-    wave
-}){
+export function Info(){
+
+    const aboutObj = [
+        {
+            img: recycleLogo,
+            icon: "recycle",
+            info: "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+        },
+
+        {
+            img: educationLogo,
+            icon: "education",
+            info: "We have improved the education of over twenty-thousand students."
+        },
+
+        {
+            img: housingLogo,
+            icon: "housing",
+            info: "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+        }
+    ]
+
     return(
         <div
             className="
@@ -10,32 +33,67 @@ export function Info({
                 lg:p-10 lg:pb-25
             "
         >
-            <h1 className="home-section-header">
+            <h1 className="home-section-header lg:hidden">
                 About Solving7
             </h1>
 
             <div
                 className="
                     flex flex-col
-                    lg:flex-row lg:p-6 lg:gap-10 lg:items-center
+                    lg:flex-row lg:p-6 lg:gap-30 lg:items-center
                 "
             >
-                <img 
-                    src={deskImg}
-                    alt="desk-img"
-                    className="rounded-2xl md:h-100"
-                />
+                <div
+                    className="mb-4 lg:p-4 lg:border-8 lg:border-green-600 rounded"
+                >
+                    <img 
+                        src={deskImg}
+                        alt="desk-img"
+                        className="rounded-2xl md:h-100"
+                    />
+                </div>
 
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero optio aperiam suscipit deleniti, repellat facere ducimus velit temporibus voluptas omnis dignissimos, expedita incidunt placeat quibusdam sunt a! Ullam, sapiente magnam.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore dignissimos tempora laboriosam est officia ipsa perspiciatis aliquid earum aliquam minus! Iure quis cum corrupti asperiores temporibus perferendis nulla magni sunt!
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus, reiciendis. Quia velit itaque officiis minima accusamus perspiciatis ab neque quibusdam amet dolore reprehenderit cumque totam quas nemo, nesciunt ducimus temporibus.
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et voluptates, odio quo tempore in assumenda, dolorem optio aspernatur vero rerum doloremque. Ipsam enim, porro tenetur obcaecati doloremque aliquid accusantium veniam.
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione illo delectus excepturi illum ipsum. Commodi minus iure, iusto quam perspiciatis tempore neque, quisquam beatae praesentium repudiandae dicta ab temporibus aliquam.
-                </p>
+                <div className="lg:w-170">
+                    <h1
+                        className="hidden lg:block home-section-header text-left text-[50px]"
+                    >
+                        About Solving7
+                    </h1>
+
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, vel minus nulla dicta impedit animi dolores modi libero ratione totam repellat nobis mollitia, quas velit nam expedita numquam temporibus. Molestiae.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum perferendis soluta veniam placeat sit, maxime a quasi tempora quibusdam labore obcaecati molestiae, at enim tenetur dolorum voluptate vitae beatae officia.
+                    </p>
+
+                    <div
+                        className="lg:flex lg:gap-6"
+                    >
+                        {aboutObj.map((about, index) => (
+                            <div
+                                key={index}
+                                className="grid grid-cols-[1fr_2fr] gap-2 items-center"
+                            >
+                                <img 
+                                    src={about?.img}
+                                    alt={`${about?.icon}-logo`}
+                                    className="h-20"
+                                />
+
+                                <p>
+                                    {about?.info}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+
+                    <button
+                        className="link-button"
+                    >
+                        Learn More <span className="animate-pulse">→</span>
+                    </button>
+                </div>
             </div>
-
-            {wave("white")}
+            <WaveBg colour={"white"}/>
         </div>
     )
 }

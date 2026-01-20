@@ -14,6 +14,7 @@ function App() {
     const [allProductPillars, setAllProductPillars] = useState([])
     const [allMemberTeams, setAllMemberTeams] = useState([])
     const [allNews, setAllNews] = useState([])
+    const [allSustainableGoals, setAllSustainableGoals] = useState([])
 
     useFetch("/api/emails", setAllEmails)
     useFetch("/api/socials", setAllSocials)
@@ -38,7 +39,8 @@ function App() {
         allProductPillars, setAllProductPillars,
         allTeamMembers, setAllTeamMembers,
         allMemberTeams, setAllMemberTeams,
-        allNews, setAllNews
+        allNews, setAllNews,
+        allSustainableGoals, setAllSustainableGoals
     }
 
     return(

@@ -1,8 +1,7 @@
+import { WaveBg } from "../../../Components/WaveBg"
 import heroImg from "../../../Resources/HomeImg.png"
 
-export function Hero({
-    wave
-}){
+export function Hero(){
     return(
         <div
             style={{
@@ -10,7 +9,7 @@ export function Hero({
             }}
             className="home-sections h-100 bg-center bg-cover bg-no-repeat lg:h-180"
         >
-            {wave("green")}
+            <WaveBg colour={"green"}/>
         </div>
     )
 }

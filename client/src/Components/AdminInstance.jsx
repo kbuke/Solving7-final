@@ -1,29 +1,25 @@
 import { AdminTable } from "./AdminTables";
 
 export function AdminInstance({
-    id,
+    index,
+    total,
     title,
     hiddenValue,
+    instanceImg,
     fields,
-    // instanceButtons,
     relational,
-    relationalArray,
-    relationalKey,
-    setRelationAction,
+    setSelectedRelation,
     setSelectedId,
     chosenId,
-    setRelationalId,
-    chosenRelationalId,
     setInstanceAction
 }) {
-    console.log(relationalArray)
     const instanceButtons = (type) => {
         return(
             <button
                 className={`${type === "patch"
                     ? "bg-blue-600"
                     : "bg-red-600"
-                }`}
+                } w-40`}
                 onClick={() => {
                     setSelectedId(chosenId)
                     setInstanceAction(type)
@@ -36,32 +32,38 @@ export function AdminInstance({
             </button>
         )
     }
+    
     return (
-        <div className="border-b border-black p-4">
+        <div className={`mt-10 pb-10 ${index !== total - 1 ? "border-b border-dashed border-gray-400" : ""}`}>
 
-            {/* hidden input / value */}
-            <AdminTable
-                label={title}
-                type="text"
-                value={hiddenValue}
-                isHidden
-            />
-
-            {/* visible title */}
-            <h2 className="hidden md:block text-center font-bold text-2xl mb-2">
-                {hiddenValue}
-            </h2>
-
-            {/* fields */}
-            <div className="lg:grid lg:grid-cols-2 lg:justify-items-center lg:text-center">
-                {fields.map(({ label, type, value }, index) => (
+            <div className="flex flex-col lg:flex-row lg:gap-50 lg:p-10">
+                <div>
                     <AdminTable
-                        key={index}
-                        label={label}
-                        type={type}
-                        value={value}
+                        label={title}
+                        type="text"
+                        value={hiddenValue}
                     />
-                ))}
+
+                    {/* fields */}
+                    <div>
+                        {fields.map(({ label, type, value }, index) => (
+                            <AdminTable
+                                key={index}
+                                label={label}
+                                type={type}
+                                value={value}
+                            />
+                        ))}
+                    </div>
+                </div>
+                {
+                        instanceImg 
+                            ? <img 
+                                src={instanceImg}
+                                className="lg:h-50 lg:w-100"
+                            />
+                            : null
+                    }
             </div>
 
             {/* buttons */}
@@ -70,53 +72,20 @@ export function AdminInstance({
                 {instanceButtons("delete")}
             </div>
 
-            {relational
-                ? <div className="flex flex-col">
-                        <h2
-                            className="font-bold text-center mt-4 uppercase text-2xl"
-                        >
-                            {relational}
-                        </h2>
-
-                        <button
-                            className="submit-button self-center mt-4 mb-2 w-50"
-                            onClick={() => {
-                                setRelationAction("post")
-                                setSelectedId(id)
-                            }}
-                        >
-                            Add {relational}
-                        </button>
-
-                        <div className="grid grid-cols-[1fr_3fr]">
-                            <label className="font-bold">
-                                {relational}
-                            </label>
-
-                            <ul className="list-disc list-inside">
-                                {relationalArray?.map((relation, index) => (
-                                    <div key={index} 
-                                        className="flex flex-col border-b"
-                                    >
-                                        <li>
-                                            {relation?.[relationalKey]}
-                                        </li>
-
-                                        <button 
-                                            className="bg-red-600 h-10 w-20 self-center mt-2 mb-2"
-                                            onClick={() => {
-                                                setRelationalId(relation?.id)
-                                                setRelationAction("delete")
-                                                setSelectedId(chosenId)
-                                            }}
-                                        >
-                                            Delete
-                                        </button>
-                                    </div>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
+            {
+                relational 
+                ? <div className="flex flex-col items-center mt-10">
+                    <h2 className="uppercase font-bold tracking-wide text-[25px]">Relations</h2>
+                    <button 
+                        className="bg-purple-600 w-40"
+                        onClick={() => {
+                            setSelectedRelation(relational)
+                            setSelectedId(chosenId)
+                        }}
+                    >
+                        {relational}
+                    </button>
+                </div>
                 : null
             }
         </div>

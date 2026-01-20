@@ -1,13 +1,13 @@
 export function AdminTable({
-    label, type, value, isHidden
+    label, 
+    type, 
+    value
 }){
     return(
         <div
             className={`
-                grid grid-cols-[2fr_3fr] gap-2
-                ${isHidden ? "lg:hidden" : null}
-
-                lg:flex lg:flex-col
+                ${type === "text" ? "grid grid-cols-[1fr_2fr] lg:grid-cols-[1fr_4fr]" : null}
+                mb-4
             `}
         >
             <label
@@ -17,13 +17,12 @@ export function AdminTable({
             </label>
 
             {type === "img"
-                ?<img 
-                    src={value}
-                />
-                : <p>
+                ? null
+                : <p className="lg:w-150">
                     {value}
                 </p>
             }
+
         </div>
     )
 }

@@ -1,6 +1,7 @@
 import { DeleteInstance } from "./DeleteInstance";
 import { PatchInstance } from "./PatchInstance";
 import { PostInstance } from "./PostInstance";
+import { RelationalInstance } from "./RelationalInstance";
 
 export function PopUp({
     type,
@@ -9,7 +10,11 @@ export function PopUp({
     handleInstanceSubmit,
     instanceName,
     patchReset,
-    selectedInstance
+    selectedInstance,
+    relationArray,
+    relationKey,
+    setRelationAction,
+    setRelationalId
 }){
     return(
         <div
@@ -35,6 +40,14 @@ export function PopUp({
                     selectedInstance={selectedInstance}
                     handleInstancePatch={handleInstanceSubmit}
                     inputArray={inputArray}
+                />
+                : type === "relational"
+                ? <RelationalInstance 
+                    relationTitle={instanceName}
+                    relationArray={relationArray}
+                    relationKey={relationKey}
+                    setRelationAction={setRelationAction}
+                    setRelationalId={setRelationalId}
                 />
                 : null
             }

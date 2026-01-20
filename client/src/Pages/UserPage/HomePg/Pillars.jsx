@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { WaveBg } from "../../../Components/WaveBg"
 
 export function Pillars({ 
     appData ,
@@ -9,13 +10,9 @@ export function Pillars({
 
   return (
     <div className="
-        home-sections mt-7 px-1 pb-22
+        home-sections mt-7 px-1 pb-26
         lg:mt-2
     ">
-        <h1 className="home-section-header">
-            Our 7 Pillars
-        </h1>
-
         <div
             className="
                 flex flex-col
@@ -23,10 +20,19 @@ export function Pillars({
             "
         >
             <div>
+                <h1
+                    className="hidden lg:block home-section-header text-left text-[50px]"
+                >
+                    Our 7 Pillars
+                </h1>
+
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident quas assumenda sint recusandae soluta consequuntur ex accusamus molestiae ducimus itaque sit nesciunt voluptatibus dolorem, quos ab, hic molestias. Quaerat, nesciunt?</p>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum consequatur ad modi, aliquid perspiciatis quos at aperiam itaque nesciunt nihil, reiciendis repellat eius officia sequi corrupti ipsam ex pariatur id.</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores placeat quaerat dolorum ipsam veritatis ipsum illum? Sapiente veniam molestiae distinctio delectus beatae quaerat neque corrupti dolorum iste? Ad, harum dignissimos.</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus excepturi vel nihil maiores quibusdam voluptas quos deleniti doloremque perspiciatis iure asperiores expedita inventore praesentium amet voluptate vero ipsam, velit nesciunt?</p>
+
+                <button className="link-button">
+                    Learn More <span className="animate-pulse">→</span>
+                </button>
             </div>
 
             <div className="py-3 overflow-hidden">
@@ -55,10 +61,6 @@ export function Pillars({
                                 <h2 className="font-bold tracking-wider text-md uppercase">
                                     {pillar?.pillar}
                                 </h2>
-
-                                <button className="self-center p-3 mt-9 bg-linear-to-br from-blue-500 to-blue-600">
-                                    More Info
-                                </button>
                             </div>
                         </div>
                     ))}
@@ -76,7 +78,7 @@ export function Pillars({
             </div>
         </div>
 
-        {wave("green")}
+        <WaveBg colour={"green"}/>
     </div>
   )
 }

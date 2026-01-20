@@ -4,8 +4,12 @@ import { AdminProducts } from "./AdminProducts/AdminProducts";
 import { AdminTeams } from "./AdminTeams/AdminTeams";
 import { AdminTeamMembers } from "./AdminTeamMembers/AdminTeamMembers";
 import { AdminNews } from "./AdminNews/AdminNews";
+import { useState } from "react";
+import { AdminSustainableGoals } from "./AdminSustainableGoals/AdminSustainablleGoals";
 
 export function AdminPage(){
+    const [openRelation, setOpenRelation] = useState()
+
     const appData = useOutletContext()
 
     const isLoading = appData?.isLoading
@@ -53,6 +57,8 @@ export function AdminPage(){
             <AdminProducts 
                 appData={appData}
                 instanceButtons={instanceButtons}
+                openRelation={openRelation}
+                setOpenRelation={setOpenRelation}
             />
 
             <AdminTeams 
@@ -65,6 +71,12 @@ export function AdminPage(){
             <AdminTeamMembers 
                 appData={appData}
                 instanceButtons={instanceButtons}
+                openRelation={openRelation}
+                setOpenRelation={setOpenRelation}
+            />
+
+            <AdminSustainableGoals 
+                appData={appData}
             />
 
             <AdminNews 

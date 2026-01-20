@@ -21,12 +21,14 @@ export function AdminNews({
     return(
         <>
             <AdminSections 
-                bgColour="bg-blue-200/40"
+                bgColour="white"
                 sectionTitle={"News"}
                 setInstanceAction={setNewsAction}
-                table={allNews.map((news) => (
+                table={allNews.map((news, index) => (
                     <AdminInstance 
                         key={news.id}
+                        index={index}
+                        total={allNews.length}
                         title="News Title: "
                         hiddenValue={news.title}
                         setInstanceAction={setNewsAction}

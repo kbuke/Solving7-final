@@ -27,16 +27,19 @@ export function AdminPillars({
     return (
         <>
             <AdminSections
-                bgColour="bg-blue-200/40"
+                bgColour="green"
                 sectionTitle="Pillars"
                 currentInstances={currentPillars}
                 maxInstances={noOfPillarsAllowed}
                 setInstanceAction={setPillarAction}
-                table={allPillars?.map((pillar) => (
+                table={allPillars?.map((pillar, index) => (
                     <AdminInstance
                         key={pillar.id}
+                        index={index}
+                        total={allPillars.length}
                         title="Pillar Name:"
                         hiddenValue={pillar.pillar}
+                        instanceImg={pillar.img}
                         setInstanceAction={setPillarAction}
                         setSelectedId={setSelectedPillarId}
                         chosenId={pillar?.id}
@@ -45,12 +48,7 @@ export function AdminPillars({
                                 label: "Pillar Intro:",
                                 type: "text",
                                 value: pillar.intro,
-                            },
-                            {
-                                label: "Pillar Image:",
-                                type: "img",
-                                value: pillar.img,
-                            },
+                            }
                         ]}
                     />
                 ))}
