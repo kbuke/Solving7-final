@@ -26,6 +26,7 @@ function App() {
     useFetch("/api/members", setAllTeamMembers, [allMemberTeams, allTeams])
     useFetch("/api/memberteams", setAllMemberTeams)
     useFetch("/api/news", setAllNews)
+    useFetch("/api/sustainabilitygoals", setAllSustainableGoals)
 
 
     const outletContext = {

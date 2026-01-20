@@ -3,6 +3,7 @@ import { AdminSections } from "../../../Components/AdminSections";
 import { useFetch } from "../../../Hooks/useFetch";
 import { AdminInstance } from "../../../Components/AdminInstance";
 import { PostSustainableGoal } from "./CRUD Actions/PostSustainableGoal";
+import { DeleteSustainableGoal } from "./CRUD Actions/DeleteSustainableGoal";
 
 export function AdminSustainableGoals({
     appData
@@ -16,13 +17,18 @@ export function AdminSustainableGoals({
     const allSustainableGoals = appData?.allSustainableGoals
     const setAllSustainableGoals = appData?.setAllSustainableGoals
 
-    console.log(setAllSustainableGoals)
-    console.log(sustainableAction)
+    const currentGoals = allSustainableGoals.length
+    const noOfGoals = 17
+
+    console.log(allSustainableGoals)
+
     return(
         <>
             <AdminSections 
                 bgColour="green"
                 sectionTitle={"Sustainable Goals"}
+                currentInstances={currentGoals}
+                maxInstances={noOfGoals}
                 setInstanceAction={setSustainableAction}
                 table={allSustainableGoals?.map((sustainable, index) => (
                     <AdminInstance 
@@ -51,6 +57,13 @@ export function AdminSustainableGoals({
                     setSustainableAction={setSustainableAction}
                     isLoading={appData?.isLoading}
                     setIsLoading={appData?.setIsLoading}
+                />
+                : sustainableAction === "delete"
+                ? <DeleteSustainableGoal 
+                    sustainableId={sustainableId}
+                    setAllSustainableGoals={setAllSustainableGoals}
+                    setSustainableAction={setSustainableAction}
+                    selectedSustainableGoal={selectedSustainableGoal}
                 />
                 : null
             }
