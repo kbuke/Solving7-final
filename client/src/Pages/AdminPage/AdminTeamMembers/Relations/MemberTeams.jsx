@@ -18,7 +18,6 @@ export function MemberTeams({
     const allMemberTeams = appData?.allMemberTeams
     const setAllMemberTeams = appData?.setAllMemberTeams
 
-    console.log(selectedTeamMember)
     const memberTeams = selectedTeamMember?.teams
 
     return(

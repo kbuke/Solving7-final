@@ -17,8 +17,12 @@ class PillarModel(db.Model, SerializerMixin):
 
     products = db.relationship("ProductModel", back_populates = "pillars", secondary = "pillar_products")
 
+    sustainable_goals = db.relationship("UnSustainabilityModel", back_populates = "pillars", secondary = "pillar_goals")
+
     serialize_rules = (
         "-products.pillars",
+
+        "-sustainable_goals.pillars",
     )
 
     # VALIDATIONS 

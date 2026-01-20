@@ -77,6 +77,8 @@ export function AdminPage(){
 
             <AdminSustainableGoals 
                 appData={appData}
+                openRelation={openRelation}
+                setOpenRelation={setOpenRelation}
             />
 
             <AdminNews 

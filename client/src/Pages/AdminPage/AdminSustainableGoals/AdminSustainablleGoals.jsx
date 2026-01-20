@@ -5,9 +5,12 @@ import { AdminInstance } from "../../../Components/AdminInstance";
 import { PostSustainableGoal } from "./CRUD Actions/PostSustainableGoal";
 import { DeleteSustainableGoal } from "./CRUD Actions/DeleteSustainableGoal";
 import { PatchSustainableGoal } from "./CRUD Actions/PatchSustainableGoal";
+import { SustainablePillars } from "./Relations/SustainablePillars";
 
 export function AdminSustainableGoals({
-    appData
+    appData,
+    openRelation,
+    setOpenRelation
 }){
     const [sustainableAction, setSustainableAction] = useState()
     const [sustainableId, setSustainableId] = useState()
@@ -48,6 +51,8 @@ export function AdminSustainableGoals({
                                 value: sustainable?.info
                             }
                         ]}
+                        relational={"Sustainable Pillars"}
+                        setSelectedRelation={setOpenRelation}
                     />
                 ))}
             />
@@ -75,6 +80,16 @@ export function AdminSustainableGoals({
                 />
                 : null
             }
+
+            {openRelation === "Sustainable Pillars" && selectedSustainableGoal
+                ? <SustainablePillars 
+                    appData={appData}
+                    sustainableId={sustainableId}
+                    sustainableGoal={selectedSustainableGoal?.goal}
+                    selectedSustainableGoal={selectedSustainableGoal}
+                />
+                : null
+            } 
         </>
     )
 }

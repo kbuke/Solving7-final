@@ -14,6 +14,12 @@ class UnSustainabilityModel(db.Model, SerializerMixin):
     goal = db.Column(db.String, nullable = False, unique = True)
     info = db.Column(db.String, nullable = False)
 
+    pillars = db.relationship("PillarModel", back_populates = "sustainable_goals", secondary = "pillar_goals")
+
+    serialize_rules = (
+        "-pillars.sustainable_goals",
+    )
+
     @validates("goal")
     def validate_un_goal(self, key, value):
         value = validate_string(value, "Goal")

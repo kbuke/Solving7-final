@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useFetch } from "./Hooks/useFetch"
 import { Outlet } from "react-router"
 
@@ -15,6 +15,7 @@ function App() {
     const [allMemberTeams, setAllMemberTeams] = useState([])
     const [allNews, setAllNews] = useState([])
     const [allSustainableGoals, setAllSustainableGoals] = useState([])
+    const [allSustainablePillars, setAllSustainablePillars] = useState([])
 
     useFetch("/api/emails", setAllEmails)
     useFetch("/api/socials", setAllSocials)
@@ -27,6 +28,7 @@ function App() {
     useFetch("/api/memberteams", setAllMemberTeams)
     useFetch("/api/news", setAllNews)
     useFetch("/api/sustainabilitygoals", setAllSustainableGoals)
+    useFetch("/api/pillargoals", setAllSustainablePillars)
 
 
     const outletContext = {
@@ -41,7 +43,8 @@ function App() {
         allTeamMembers, setAllTeamMembers,
         allMemberTeams, setAllMemberTeams,
         allNews, setAllNews,
-        allSustainableGoals, setAllSustainableGoals
+        allSustainableGoals, setAllSustainableGoals,
+        allSustainablePillars, setAllSustainablePillars
     }
 
     return(
