@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { PopUp } from "../../../../Components/PopUp";
 import { PostSustainablePillar } from "./PostSustainablePillar";
+import { DeleteSustainablePillar } from "./DeleteSustainablePillar";
 
 export function SustainablePillars({
     appData,
@@ -40,6 +41,14 @@ export function SustainablePillars({
                     isLoading={appData?.isLoading}
                     setIsLoading={appData?.setIsLoading}
                     selectedSustainableGoal={selectedSustainableGoal}
+                />
+                : pillarAction === "delete"
+                ? <DeleteSustainablePillar 
+                    pillarId={pillarId}
+                    sustainableId={sustainableId}
+                    allSustainablePillars={allSustainablePillars}
+                    setAllSustainablePillars={setAllSustainablePillars}
+                    setPillarAction={setPillarAction}
                 />
                 : null
             }
