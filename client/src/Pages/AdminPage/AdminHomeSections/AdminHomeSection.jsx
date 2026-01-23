@@ -4,6 +4,7 @@ import { AdminSections } from "../../../Components/AdminSections";
 import { AdminInstance } from "../../../Components/AdminInstance";
 import { PostHomeSection } from "./CRUD Actions/PostHomeSection";
 import { PatchHomeSection } from "./CRUD Actions/PatchHomeSection";
+import { DeleteHomeSection } from "./CRUD Actions/DeleteHomeSection";
 
 export function AdminHomeSections({
     appData
@@ -55,6 +56,13 @@ export function AdminHomeSections({
                 : homeSectionAction === "patch"
                 ? <PatchHomeSection 
                     allHomeSections={allHomeSections}
+                    selectedHomeSectionId={selectedHomeSectionId}
+                    setAllHomeSections={setAllHomeSections}
+                    setHomeSectionAction={setHomeSectionAction}
+                    selectedHomeSection={selectedHomeSection}
+                />
+                : homeSectionAction === "delete"
+                ? <DeleteHomeSection 
                     selectedHomeSectionId={selectedHomeSectionId}
                     setAllHomeSections={setAllHomeSections}
                     setHomeSectionAction={setHomeSectionAction}
