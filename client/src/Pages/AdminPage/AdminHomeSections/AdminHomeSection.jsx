@@ -3,6 +3,7 @@ import { useFetch } from "../../../Hooks/useFetch";
 import { AdminSections } from "../../../Components/AdminSections";
 import { AdminInstance } from "../../../Components/AdminInstance";
 import { PostHomeSection } from "./CRUD Actions/PostHomeSection";
+import { PatchHomeSection } from "./CRUD Actions/PatchHomeSection";
 
 export function AdminHomeSections({
     appData
@@ -50,6 +51,14 @@ export function AdminHomeSections({
                     setHomeSectionAction={setHomeSectionAction}
                     isLoading={appData?.isLoading}
                     setIsLoading={appData?.setIsLoading}
+                />
+                : homeSectionAction === "patch"
+                ? <PatchHomeSection 
+                    allHomeSections={allHomeSections}
+                    selectedHomeSectionId={selectedHomeSectionId}
+                    setAllHomeSections={setAllHomeSections}
+                    setHomeSectionAction={setHomeSectionAction}
+                    selectedHomeSection={selectedHomeSection}
                 />
                 : null
             }
