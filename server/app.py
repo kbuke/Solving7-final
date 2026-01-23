@@ -12,6 +12,7 @@ from resources.PillarProducts import PillarProductsList, SpecificPillarProductsL
 from resources.Socials import SocialsList, SpecificSocial
 from resources.News import NewsList, SpecificNews
 from resources.PillarSustainability import PillarSustainabilityList, SpecificPillarSustainability
+from resources.HomeSection import HomeSectionList, SpecificHomeSection
 
 from resources.Login import Login
 from resources.Logout import Logout
@@ -50,6 +51,9 @@ api.add_resource(SpecificNews, "/news/<int:id>")
 
 api.add_resource(PillarSustainabilityList, "/pillargoals")
 api.add_resource(SpecificPillarSustainability, "/pillargoals/<int:id>")
+
+api.add_resource(HomeSectionList, "/homesections")
+api.add_resource(SpecificHomeSection, "/homesections/<int:id>")
 
 api.add_resource(CheckSession, "/session")
 

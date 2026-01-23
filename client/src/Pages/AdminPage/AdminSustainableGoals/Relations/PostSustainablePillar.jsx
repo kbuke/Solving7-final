@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { PopUp } from "../../../../Components/PopUp"
 import { usePost } from "../../../../Hooks/usePost"
 
@@ -10,6 +11,8 @@ export function PostSustainablePillar({
     setIsLoading,
     selectedSustainableGoal
 }){
+    const [successfulSustainableGoalPost, setSuccessfulSustainableGoalPost] = useState()
+
     const definedPillars = selectedSustainableGoal?.pillars
 
     const selectedPillarIds = new Set(
@@ -60,6 +63,9 @@ export function PostSustainablePillar({
             instanceType={"Sustainable Pillar"}
             inputArray={newPillarInput}
             handleInstanceSubmit={handlePillarPost}
+            setState={setPillarAction}
+            success={successfulSustainableGoalPost}
+            setSuccess={setSuccessfulSustainableGoalPost}
         />
     )
 }

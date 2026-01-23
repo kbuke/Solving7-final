@@ -3,6 +3,7 @@ import { usePost } from "../../../../Hooks/usePost"
 import { ProductInputs } from "../ProductComponents/ProductInputs"
 
 export function PostProduct({
+    allProducts,
     setAllProducts,
     setProductAction,
     isLoading,
@@ -27,8 +28,9 @@ export function PostProduct({
         <PopUp 
             type={"post"}
             instanceType={"Product"}
-            inputArray={ProductInputs()}
+            inputArray={ProductInputs({allProducts})}
             handleInstanceSubmit={handleProductPost}
+            setState={setProductAction}
         />
     )
 }

@@ -3,6 +3,7 @@ import { ProductInputs } from "../ProductComponents/ProductInputs"
 import { usePatch } from "../../../../Hooks/usePatch"
 
 export function PatchProduct({
+    allProducts,
     selectedProductId,
     setAllProducts,
     setProductAction,
@@ -26,7 +27,6 @@ export function PatchProduct({
     ]
 
     const handleProductEdit = (formData) => {
-        console.log(formData)
         const patchData = {
             productName: formData?.productName,
             productImg: formData?.productImg,
@@ -46,8 +46,12 @@ export function PatchProduct({
             instanceName={selectedProduct?.name}
             patchReset={patchPillarObject}
             selectedInstance={selectedProduct}
-            inputArray={ProductInputs()}
+            inputArray={ProductInputs({
+                allProducts: allProducts,
+                currentId: selectedProductId
+            })}
             handleInstanceSubmit={handleProductEdit}
+            setState={setProductAction}
         />
     )
 }

@@ -56,6 +56,7 @@ export function AdminPillars({
 
             {pillarAction === "post"
                 ? <PostPillar 
+                    allPillars={allPillars}
                     setAllPillars={setAllPillars}
                     setPillarAction={setPillarAction}
                     isLoading={isLoading}
@@ -70,6 +71,7 @@ export function AdminPillars({
                 />
                 : pillarAction === "patch"
                 ? <PatchPillar 
+                    allPillars={allPillars}
                     selectedPillarId={selectedPillarId}
                     setAllPillars={setAllPillars}
                     setPillarAction={setPillarAction}

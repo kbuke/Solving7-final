@@ -49,6 +49,7 @@ export function AdminTeams({
 
             {teamAction === "post"
                 ? <PostTeam 
+                    allTeams={allTeams}
                     setAllTeams={setAllTeams}
                     setTeamAction={setTeamAction}
                     isLoading={isLoading}
@@ -63,6 +64,7 @@ export function AdminTeams({
                 />
                 : teamAction === "patch"
                 ? <PatchTeam 
+                    allTeams={allTeams}
                     selectedTeamId={selectedTeamId}
                     setAllTeams={setAllTeams}
                     setTeamAction={setTeamAction}

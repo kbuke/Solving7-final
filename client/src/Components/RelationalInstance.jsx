@@ -1,16 +1,19 @@
+import { PopUpHeader } from "./PopUpHeader"
+
 export function RelationalInstance({
     relationTitle,
     relationArray,
     relationKey,
+    setCloseAction,
     setRelationAction,
     setRelationalId
 }){
-    console.log("you're looking at a relational page")
     return(
-        <div className="h-9/10 w-90 bg-white flex flex-col justify-center items-center">
-            <h1 className="uppercase tracking-wide font-bold text-[26px] mb-4">
-                {relationTitle}
-            </h1>
+        <div className="h-9/10 w-90 bg-white flex flex-col justify-center items-center rounded">
+            <PopUpHeader 
+                header={"New Pillar"}
+                setState={(setCloseAction)}
+            />
 
             <button 
                 className="bg-green-600 w-60 mb-4"

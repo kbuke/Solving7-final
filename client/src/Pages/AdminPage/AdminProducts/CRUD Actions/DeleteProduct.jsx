@@ -22,6 +22,7 @@ export function DeleteProduct({
             instanceType={"Product"}
             handleInstanceSubmit={handleDeleteProduct}
             instanceName={selectedProduct?.name}
+            setState={setProductAction}
         />
     )
 }

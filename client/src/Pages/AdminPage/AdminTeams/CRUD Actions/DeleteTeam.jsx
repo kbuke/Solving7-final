@@ -23,6 +23,7 @@ export function DeleteTeam({
             instanceType={"Team"}
             handleInstanceSubmit={handleDeleteTeam}
             instanceName={selectedTeam?.name}
+            setState={setTeamAction}
         />
     )
 }

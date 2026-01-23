@@ -22,6 +22,7 @@ export function DeleteSustainableGoal({
             instanceType={"Sustainable Goal"}
             handleInstanceSubmit={handleDeleteGoal}
             instanceName={selectedSustainableGoal?.goal}
+            setState={setSustainableAction}
         />
     )
 }

@@ -1,13 +1,22 @@
-export function ProductInputs(){
+import { RequiredInput } from "../../../../Components/RequiredInput";
+import { UniqueInput } from "../../../../Components/UniqueInput";
+
+export function ProductInputs({
+    allProducts,
+    currentId
+}){
     return([
         {
             type: "text",
             placeholder: "Please enter product name",
             className: "text-input-container",
             name: "productName",
-            validation: {
-                required: "Please enter the name of the product"
-            }
+            validation: UniqueInput({
+                inputType: "Product",
+                allInstances: allProducts,
+                field:"name",
+                currentId: currentId? currentId : null
+            })
         },
 
         {
@@ -15,9 +24,7 @@ export function ProductInputs(){
             placeholder: "Please enter product image",
             className: "text-input-container",
             name: "productImg",
-            validation: {
-                required: "Please enter a url for the image"
-            }
+            validation: RequiredInput("Produt Image")
         },
 
         {
@@ -25,9 +32,7 @@ export function ProductInputs(){
             placeholder: "Please enter product information",
             className: "product-text-area",
             name: "productInfo",
-            validation: {
-                required: "Please enter information about the product."
-            }
+            validation: RequiredInput("Product Information")
         }
     ])
 }

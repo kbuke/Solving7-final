@@ -6,6 +6,7 @@ import { AdminTeamMembers } from "./AdminTeamMembers/AdminTeamMembers";
 import { AdminNews } from "./AdminNews/AdminNews";
 import { useState } from "react";
 import { AdminSustainableGoals } from "./AdminSustainableGoals/AdminSustainablleGoals";
+import { AdminHomeSections } from "./AdminHomeSections/AdminHomeSection";
 
 export function AdminPage(){
     const [openRelation, setOpenRelation] = useState()
@@ -82,6 +83,10 @@ export function AdminPage(){
             />
 
             <AdminNews 
+                appData={appData}
+            />
+
+            <AdminHomeSections 
                 appData={appData}
             />
         </div>

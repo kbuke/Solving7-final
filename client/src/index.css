@@ -168,6 +168,36 @@
  }
 
 @layer components{
+  .form-popup{
+    @apply
+      bg-white
+      overflow-y-auto
+      rounded-2xl
+      p-4
+      sm:min-w-full
+      flex 
+      flex-col
+      h-9/10
+      justify-center
+  }
+
+  .text-input{
+    @apply
+      border
+      rounded
+      w-full
+      text-center
+  }
+
+  .textarea-input{
+    @apply
+      border
+      w-full
+      text-center
+      h-40
+      rounded
+  }
+
   .form-headers{
     @apply
       uppercase
@@ -238,8 +268,8 @@
       rounded
       flex
       flex-col
-      justify-center
       items-center
+      p-2
   }
 
   .admin-title{
@@ -359,7 +389,7 @@
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 12px;
+  margin-top: 20px;
 }
 
 .dot {

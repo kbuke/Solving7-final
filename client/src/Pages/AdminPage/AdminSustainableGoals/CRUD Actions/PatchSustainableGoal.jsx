@@ -3,12 +3,12 @@ import { usePatch } from "../../../../Hooks/usePatch"
 import { SustainableInputs } from "../SustainableComponents/SustainableInputs"
 
 export function PatchSustainableGoal({
+    allSustainableGoals,
     sustainableId,
     setAllSustainableGoals,
     setSustainableAction,
     selectedSustainableGoal
 }){
-    console.log(selectedSustainableGoal)
     const patchSustainableObject = [
         {
             key: "unGoal",
@@ -40,8 +40,12 @@ export function PatchSustainableGoal({
             instanceName={selectedSustainableGoal?.goal}
             patchReset={patchSustainableObject}
             selectedInstance={selectedSustainableGoal}
-            inputArray={SustainableInputs()}
+            inputArray={SustainableInputs({
+                allSustainableGoals: allSustainableGoals,
+                currentId: sustainableId
+            })}
             handleInstanceSubmit={handleGoalPatch}
+            setState={setSustainableAction}
         />
     )
 }

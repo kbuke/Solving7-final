@@ -1,13 +1,16 @@
+import { useState } from "react"
 import { PopUp } from "../../../../Components/PopUp"
 import { usePost } from "../../../../Hooks/usePost"
 import { TeamInputs } from "../TeamComponents/TeamInputs"
 
 export function PostTeam({
+    allTeams,
     setAllTeams,
     setTeamAction,
     isLoading,
     setIsLoading
 }){
+    const [successfulTeamPost, setSuccessfulTeamPost] = useState()
 
     const handleTeamPost = (formData) => {
         usePost({
@@ -27,8 +30,11 @@ export function PostTeam({
         <PopUp 
             type={"post"}
             instanceType={"Team"}
-            inputArray={TeamInputs()}
+            inputArray={TeamInputs({allTeams})}
             handleInstanceSubmit={handleTeamPost}
+            setState={setTeamAction}
+            success={successfulTeamPost}
+            setSuccess={setSuccessfulTeamPost}
         />
     )
 }

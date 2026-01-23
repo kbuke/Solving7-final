@@ -1,4 +1,10 @@
-export function SustainableInputs(){
+import { RequiredInput } from "../../../../Components/RequiredInput";
+import { UniqueInput } from "../../../../Components/UniqueInput";
+
+export function SustainableInputs({
+    allSustainableGoals,
+    currentId
+}){
     return([
         {
             type: "text",
@@ -6,7 +12,12 @@ export function SustainableInputs(){
             className: "text-input-container",
             name: "unGoal",
             validation: {
-                required: "Please enter UN Goal"
+                required: UniqueInput({
+                    inputType: "Sustainable Goal",
+                    allInstances: allSustainableGoals,
+                    field: "goal",
+                    currentId: currentId? currentId : null
+                })
             }
         },
 
@@ -15,9 +26,7 @@ export function SustainableInputs(){
             placeholder: "Please enter info of UN Goal",
             className: "sustainable-text-area",
             name: "unGoalInfo",
-            validation: {
-                required: "Please enter info about the goal"
-            }
+            validation: RequiredInput("Sustainable Goal")
         }
     ])
 }

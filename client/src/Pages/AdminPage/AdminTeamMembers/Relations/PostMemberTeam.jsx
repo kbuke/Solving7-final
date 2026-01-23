@@ -42,8 +42,6 @@ export function PostMemberTeam({
             teamId: formData.selectedTeam.value
         }
 
-        console.log(payload)
-
         usePost({
             url: "/api/memberteams",
             body: payload,

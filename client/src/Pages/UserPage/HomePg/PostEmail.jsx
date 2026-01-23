@@ -22,7 +22,6 @@ export function PostEmail({
     const setAllEmails = appData?.setAllEmails
 
     const handleEmailPost = (formData) => {
-        console.log("posting")
         usePost({
             url: "/api/emails",
             body: formData,

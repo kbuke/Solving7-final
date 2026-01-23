@@ -58,6 +58,7 @@ export function AdminProducts({
 
             {productAction === "post"
                 ? <PostProduct 
+                    allProducts={allProducts}
                     setAllProducts={setAllProducts}
                     setProductAction={setProductAction}
                     isLoading={isLoading}
@@ -68,9 +69,11 @@ export function AdminProducts({
                     selectedProductId={selectedProductId}
                     setAllProducts={setAllProducts}
                     setProductAction={setProductAction}
+                    selectedProduct={selectedProduct}
                 />
                 : productAction === "patch"
                 ? <PatchProduct 
+                    allProducts={allProducts}
                     selectedProductId={selectedProductId}
                     setAllProducts={setAllProducts}
                     setProductAction={setProductAction}

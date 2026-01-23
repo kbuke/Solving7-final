@@ -16,6 +16,7 @@ function App() {
     const [allNews, setAllNews] = useState([])
     const [allSustainableGoals, setAllSustainableGoals] = useState([])
     const [allSustainablePillars, setAllSustainablePillars] = useState([])
+    const [allHomeSections, setAllHomeSections] = useState([])
 
     useFetch("/api/emails", setAllEmails)
     useFetch("/api/socials", setAllSocials)
@@ -27,8 +28,9 @@ function App() {
     useFetch("/api/members", setAllTeamMembers, [allMemberTeams, allTeams])
     useFetch("/api/memberteams", setAllMemberTeams)
     useFetch("/api/news", setAllNews)
-    useFetch("/api/sustainabilitygoals", setAllSustainableGoals)
+    useFetch("/api/sustainabilitygoals", setAllSustainableGoals, [allSustainablePillars])
     useFetch("/api/pillargoals", setAllSustainablePillars)
+    useFetch("/api/homesections", setAllHomeSections)
 
 
     const outletContext = {
@@ -44,7 +46,8 @@ function App() {
         allMemberTeams, setAllMemberTeams,
         allNews, setAllNews,
         allSustainableGoals, setAllSustainableGoals,
-        allSustainablePillars, setAllSustainablePillars
+        allSustainablePillars, setAllSustainablePillars,
+        allHomeSections, setAllHomeSections
     }
 
     return(

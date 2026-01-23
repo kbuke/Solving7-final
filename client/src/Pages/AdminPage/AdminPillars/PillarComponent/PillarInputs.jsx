@@ -1,4 +1,10 @@
-export function PillarInputs(){
+import { RequiredInput } from "../../../../Components/RequiredInput";
+import { UniqueInput } from "../../../../Components/UniqueInput";
+
+export function PillarInputs({
+    allPillars,
+    currentId
+}){
     return(
         [
             {
@@ -6,9 +12,12 @@ export function PillarInputs(){
                 placeholder: "Please enter pillar goal",
                 className: "text-input-container",
                 name: "pillar",
-                validation: {
-                    required: "Please enter the pillar title."
-                }
+                validation: UniqueInput({
+                    inputType: "Pillar",
+                    allInstances: allPillars,
+                    field: "pillar",
+                    currentId: currentId ? currentId : null
+                })
             },
 
             {
@@ -16,9 +25,7 @@ export function PillarInputs(){
                 placeholder: "Please enter pillars information",
                 className: "pillar-text-area",
                 name: "pillarIntro",
-                validation: {
-                    required: "Please enter pillar intro"
-                }
+                validation: RequiredInput("Pillar Info")
             },
 
             {
@@ -26,9 +33,7 @@ export function PillarInputs(){
                 placeholder: "Please enter image link for pillar",
                 className: "text-input-container",
                 name: "pillarImg",
-                validation: {
-                    required: "Please enter image for pillar"
-                }
+                validation: RequiredInput("Pillar Img")
             }
         ]
     )

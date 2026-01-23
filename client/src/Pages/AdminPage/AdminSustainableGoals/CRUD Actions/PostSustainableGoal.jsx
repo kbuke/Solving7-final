@@ -1,13 +1,17 @@
 import { PopUp } from "../../../../Components/PopUp"
 import { SustainableInputs } from "../SustainableComponents/SustainableInputs"
 import { usePost } from "../../../../Hooks/usePost"
+import { useState } from "react"
 
 export function PostSustainableGoal({
+    allSustainableGoals,
     setAllSustainableGoals,
     setSustainableAction,
     isLoading, 
     setIsLoading
 }){
+    const [sustainableGoalSuccess, setSustainableGoalSuccess] = useState()
+
     const handleSustainablePost = (formData) => {
         console.log(formData)
         usePost({
@@ -27,8 +31,11 @@ export function PostSustainableGoal({
         <PopUp 
             type="post"
             instanceType={"Sustainability"}
-            inputArray={SustainableInputs()}
+            inputArray={SustainableInputs({allSustainableGoals})}
             handleInstanceSubmit={handleSustainablePost}
+            setState={setSustainableAction}
+            success={sustainableGoalSuccess}
+            setSuccess={setSustainableGoalSuccess}
         />
     )
 }

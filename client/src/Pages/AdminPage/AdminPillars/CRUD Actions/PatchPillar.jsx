@@ -3,6 +3,7 @@ import {usePatch} from "../../../../Hooks/usePatch"
 import { PillarInputs } from "../PillarComponent/PillarInputs"
 
 export function PatchPillar({
+    allPillars,
     selectedPillarId,
     setAllPillars,
     setPillarAction,
@@ -46,8 +47,12 @@ export function PatchPillar({
             instanceName={selectedPillar?.pillar}
             patchReset = {patchPillarObject}
             selectedInstance={selectedPillar}
-            inputArray={PillarInputs()}
+            inputArray={PillarInputs({
+                allPillars: allPillars,
+                currentId: selectedPillarId
+            })}
             handleInstanceSubmit={handlePillarEdit}
+            setState={setPillarAction}
         />
     )
 }

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { TextInput } from "./TextInput";
 import { useForm } from "react-hook-form";
+import { PopUpHeader } from "./PopUpHeader";
 
 export function PatchInstance({
     instanceType,
@@ -9,6 +10,7 @@ export function PatchInstance({
     inputArray,
     selectedInstance,
     handleInstancePatch,
+    setState
 }){
     const {
             register,
@@ -36,18 +38,19 @@ export function PatchInstance({
             onSubmit={handleSubmit(handleInstancePatch)}
             className="admin-form"
         >
-            <h1
-                className="admin-title"
-            >
-                Edit {instanceName}
-            </h1>
+            <PopUpHeader 
+                header={`Edit ${instanceType}: ${instanceName}`}
+                setState={setState}
+            />
 
+            <div className="flex flex-col items-center mt-4 mb-4 w-full">
             <TextInput 
                 inputArray={inputArray}
                 errors={errors}
                 register={register}
                 control={control}
             />
+            </div>
 
             <button className="submit-button">
                 Edit {instanceType}

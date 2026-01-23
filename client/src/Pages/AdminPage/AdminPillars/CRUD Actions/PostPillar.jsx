@@ -1,13 +1,16 @@
+import { useState } from "react"
 import { PopUp } from "../../../../Components/PopUp"
 import { usePost } from "../../../../Hooks/usePost"
 import { PillarInputs } from "../PillarComponent/PillarInputs"
 
 export function PostPillar({
+    allPillars,
     setAllPillars,
     setPillarAction,
     isLoading,
     setIsLoading
 }){
+    const [successfulPillarPost, setSuccessfulPillarPost] = useState()
 
     const handlePillarPost = (formData) => {
         usePost({
@@ -17,9 +20,8 @@ export function PostPillar({
             setLoading: setIsLoading,
             onSuccess: (newPillar) => {
                 setAllPillars(prev => [...prev, newPillar])
-                setPillarAction(null)
-            },
-            setEndActionState: setPillarAction
+                setSuccessfulPillarPost(true)
+            }
         })
     }
 
@@ -27,8 +29,11 @@ export function PostPillar({
         <PopUp 
             type={"post"}
             instanceType={"Pillar"}
-            inputArray={PillarInputs()}
+            inputArray={PillarInputs({allPillars})}
             handleInstanceSubmit={handlePillarPost}
+            setState={setPillarAction}
+            success={successfulPillarPost}
+            setSuccess={setSuccessfulPillarPost}
         />
     )
 }

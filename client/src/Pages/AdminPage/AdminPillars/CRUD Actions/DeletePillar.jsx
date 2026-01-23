@@ -23,6 +23,7 @@ export function DeletePillar({
             instanceType={"Pillar"}
             handleInstanceSubmit={handleDeletePillar}
             instanceName={selectedPillar?.pillar}
+            setState={setPillarAction}
         />
     )
 }

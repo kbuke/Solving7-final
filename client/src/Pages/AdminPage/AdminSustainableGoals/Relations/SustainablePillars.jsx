@@ -7,7 +7,8 @@ export function SustainablePillars({
     appData,
     sustainableId,
     sustainableGoal,
-    selectedSustainableGoal
+    selectedSustainableGoal,
+    setPillarRelationAction
 }){
     const [pillarAction, setPillarAction] = useState()
     const [pillarId, setPillarId] = useState()
@@ -16,8 +17,6 @@ export function SustainablePillars({
 
     const allSustainablePillars = appData?.allSustainablePillars
     const setAllSustainablePillars = appData?.setAllSustainablePillars
-    
-
 
     const sustainablePillars = selectedSustainableGoal?.pillars
 
@@ -29,6 +28,7 @@ export function SustainablePillars({
                 relationKey={"pillar"}
                 instanceName={`${sustainableGoal} Pillars`}
                 setRelationalId={setPillarId}
+                setCloseAction={setPillarRelationAction}
                 setRelationAction={setPillarAction}
             />
 

@@ -12,10 +12,8 @@ export function PatchTeamMember({
     // ENSURE ONLY PERSON WHO CAN CHANGE INFO IS LOGGED USER
     if (!selectedMember) return null
 
-    console.log("PatchTeamMember rendered", TeamMemberInputs())
     const teamMemberInputs = TeamMemberInputs()
     const patchMemberArray = teamMemberInputs.slice(0, -1)
-    console.log(patchMemberArray)
     
 
     const patchUserObject = [
@@ -26,7 +24,6 @@ export function PatchTeamMember({
     ]
 
     const handleMemberEdit = (formData) => {
-        console.log(formData)
         const patchData = {
             name: formData.name,
             img: formData.img,

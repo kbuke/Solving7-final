@@ -3,6 +3,7 @@ import { usePatch } from "../../../../Hooks/usePatch"
 import { TeamInputs } from "../TeamComponents/TeamInputs"
 
 export function PatchTeam({
+    allTeams,
     selectedTeamId,
     setAllTeams,
     setTeamAction,
@@ -39,8 +40,12 @@ export function PatchTeam({
             instanceName={selectedTeam?.name}
             patchReset={patchTeamObject}
             selectedInstance={selectedTeam}
-            inputArray={TeamInputs()}
+            inputArray={TeamInputs({
+                allTeams: allTeams,
+                currentId: selectedTeamId
+            })}
             handleInstanceSubmit={handleTeamEdit}
+            setState={setTeamAction}
         />
     )
 }

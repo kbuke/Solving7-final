@@ -16,15 +16,13 @@ export function AdminSustainableGoals({
     const [sustainableId, setSustainableId] = useState()
     const [selectedSustainableGoal, setSelectedSustainableGoal] = useState()
 
-    useFetch(`/api/sustainabilitygoals/${sustainableId}`, setSelectedSustainableGoal, [sustainableId])
-
     const allSustainableGoals = appData?.allSustainableGoals
     const setAllSustainableGoals = appData?.setAllSustainableGoals
 
+    useFetch(`/api/sustainabilitygoals/${sustainableId}`, setSelectedSustainableGoal, [sustainableId, allSustainableGoals])
+
     const currentGoals = allSustainableGoals.length
     const noOfGoals = 17
-
-    console.log(allSustainableGoals)
 
     return(
         <>
@@ -59,6 +57,7 @@ export function AdminSustainableGoals({
 
             {sustainableAction === "post"
                 ? <PostSustainableGoal 
+                    allSustainableGoals={allSustainableGoals}
                     setAllSustainableGoals={setAllSustainableGoals}
                     setSustainableAction={setSustainableAction}
                     isLoading={appData?.isLoading}
@@ -77,6 +76,7 @@ export function AdminSustainableGoals({
                     setAllSustainableGoals={setAllSustainableGoals}
                     setSustainableAction={setSustainableAction}
                     selectedSustainableGoal={selectedSustainableGoal}
+                    sustainableAction={sustainableAction}
                 />
                 : null
             }
@@ -87,6 +87,7 @@ export function AdminSustainableGoals({
                     sustainableId={sustainableId}
                     sustainableGoal={selectedSustainableGoal?.goal}
                     selectedSustainableGoal={selectedSustainableGoal}
+                    setPillarRelationAction={setOpenRelation}
                 />
                 : null
             } 

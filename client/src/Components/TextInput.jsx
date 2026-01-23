@@ -12,11 +12,11 @@ export function TextInput({
         inputArray.map((input, index) => (
             <div 
                 key={index}
-                className="mb-4 border-b border-white"
+                className="self-center p-4 w-full"
             >
                 {input?.type === "textarea"
                     ? <textarea 
-                        className={input?.className}
+                        className="textarea-input"
                         placeholder={input?.placeholder}
                         {...register(input.name, input.validation)}
                     />
@@ -28,6 +28,7 @@ export function TextInput({
                         render = {({field}) => (
                             <ReactSelect {...field} options={input.options} onChange={field.onChange} className=""/>
                         )}
+                        className="z-10"
                     />
                     : <div>
                         <label>
@@ -36,7 +37,7 @@ export function TextInput({
                         <input 
                             type={input?.type}
                             placeholder={input?.placeholder}
-                            className={input?.className}
+                            className="text-input"
                             {...register(input.name, input.validation)}
                         />
                     </div>
