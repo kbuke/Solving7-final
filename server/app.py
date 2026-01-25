@@ -13,6 +13,7 @@ from resources.Socials import SocialsList, SpecificSocial
 from resources.News import NewsList, SpecificNews
 from resources.PillarSustainability import PillarSustainabilityList, SpecificPillarSustainability
 from resources.HomeSection import HomeSectionList, SpecificHomeSection
+from resources.PgSection import PgSectionList, SpecificPgSection
 
 from resources.Login import Login
 from resources.Logout import Logout
@@ -54,6 +55,9 @@ api.add_resource(SpecificPillarSustainability, "/pillargoals/<int:id>")
 
 api.add_resource(HomeSectionList, "/homesections")
 api.add_resource(SpecificHomeSection, "/homesections/<int:id>")
+
+api.add_resource(PgSectionList, "/pgsections")
+api.add_resource(SpecificPgSection, "/pgsections/<int:id>")
 
 api.add_resource(CheckSession, "/session")
 

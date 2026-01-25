@@ -24,6 +24,7 @@ export function HomePg(){
             />
 
             <Articles />
+            
 
             {/* <Contact 
                 appData={appData}

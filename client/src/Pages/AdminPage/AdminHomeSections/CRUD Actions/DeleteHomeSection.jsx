@@ -8,7 +8,6 @@ export function DeleteHomeSection({
     selectedHomeSection
 }){ 
     const handleDeleteHomeSection = () => {
-        console.log(selectedHomeSectionId)
         useDelete(
             `/api/homesections/${selectedHomeSectionId}`,
             setAllHomeSections,

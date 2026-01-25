@@ -6,6 +6,7 @@ export function AdminInstance({
     title,
     hiddenValue,
     instanceImg,
+    additionalImgClass,
     fields,
     relational,
     setSelectedRelation,
@@ -60,7 +61,8 @@ export function AdminInstance({
                         instanceImg 
                             ? <img 
                                 src={instanceImg}
-                                className="lg:h-50 lg:w-100"
+                                // className={`lg:h-50 lg:w-100 ${additionalImgClass}`}
+                                className={additionalImgClass ? additionalImgClass : "lg:h-50 lg:w-100"}
                             />
                             : null
                     }

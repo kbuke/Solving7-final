@@ -4,6 +4,7 @@ import App from "./App"
 import { LoginPage } from "./Pages/LoginPage/LoginPage"
 import { AdminPage } from "./Pages/AdminPage/AdminPage"
 import { HomePg } from "./Pages/UserPage/HomePg"
+import { About } from "./Pages/UserPage/AboutPg/About"
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +17,11 @@ export const router = createBrowserRouter([
       },
 
       {
+        path: "/about",
+        element: <About />
+      },
+
+      {
         path: "/login",
         element: <LoginPage />,
       },
@@ -24,33 +30,6 @@ export const router = createBrowserRouter([
         path: "/admin",
         element: <AdminPage />,
       }
-    ],
-    // children: [
-    //     // Create object with path and element keys
-    //     {
-    //         path: "/",
-    //         element: <HomePage />
-    //     },
-
-    //     {
-    //         path: "/contact",
-    //         element: <ContactPage />
-    //     },
-
-    //     {
-    //         path: "/login",
-    //         element: <LoginPage />
-    //     },
-
-    //     {
-    //         path: "/admin",
-    //         element: <AdminPage />
-    //     },
-
-    //     {
-    //         path: "/team",
-    //         element: <TeamPage />
-    //     }
-    // ]
+    ]
   },
 ])

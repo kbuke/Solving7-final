@@ -35,6 +35,8 @@ export function AdminTeamMembers({
                             total={allTeamMembers.length}
                             title={"Member Name: "}
                             hiddenValue={member?.name}
+                            instanceImg={member?.img}
+                            additionalImgClass={"h-100 w-70"}
                             setInstanceAction={setTeamMemberAction}
                             setSelectedId={setSelectedTeamMemberId}
                             chosenId={member?.id}

@@ -164,6 +164,7 @@
     @apply
       text-lg
       mb-4
+      whitespace-pre-line
   }
  }
 
