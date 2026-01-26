@@ -34,6 +34,16 @@ function App() {
     useFetch("/api/homesections", setAllHomeSections)
     useFetch("/api/pgsections", setAllPgSections)
 
+    const pgInfo = (accessor, classNames) => {
+        const sectionText = allPgSections.filter(pg => pg?.page?.trim().toLowerCase() === accessor?.trim().toLowerCase())
+
+        return(
+            <p className={classNames}>
+                {sectionText[0]?.text}
+            </p>
+        )
+    }
+
 
     const outletContext = {
         isLoading, setIsLoading,
@@ -50,7 +60,8 @@ function App() {
         allSustainableGoals, setAllSustainableGoals,
         allSustainablePillars, setAllSustainablePillars,
         allHomeSections, setAllHomeSections,
-        allPgSections, setAllPgSections
+        allPgSections, setAllPgSections,
+        pgInfo
     }
 
     return(

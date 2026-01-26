@@ -1,4 +1,5 @@
 import { DeleteInstance } from "./DeleteInstance";
+import { MobileNavBar } from "./NavBar/MobileNavBar";
 import { PatchInstance } from "./PatchInstance";
 import { PostInstance } from "./PostInstance";
 import { RelationalInstance } from "./RelationalInstance";
@@ -19,7 +20,8 @@ export function PopUp({
     setState,
     success,
     setSuccess,
-    setCloseAction
+    setCloseAction,
+    navMenu
 }){
     // Stop page behind from scrolling when pop up is active.
     useScrollLock(true)
@@ -62,6 +64,11 @@ export function PopUp({
                     setCloseAction={setCloseAction}
                     setRelationAction={setRelationAction}
                     setRelationalId={setRelationalId}
+                />
+                : type === "mobile menu"
+                ? <MobileNavBar 
+                    navMenu={navMenu}
+                    setState={setState}
                 />
                 : null
             }

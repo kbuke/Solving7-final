@@ -9,6 +9,8 @@ import { SustainabilityGoals } from "./HomePg/SustainabilityGoals"
 export function HomePg(){
     const appData = useOutletContext()
 
+    console.log(appData)
+
     return(
         <div>
             <Hero />
