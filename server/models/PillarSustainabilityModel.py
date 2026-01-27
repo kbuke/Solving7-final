@@ -16,6 +16,7 @@ class PillarSustainabilityModel(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key = True)
     pillar_id = db.Column(db.ForeignKey("pillars.id"))
     sustainable_id = db.Column(db.ForeignKey("sustainability_goals.id"))
+    relationship = db.Column(db.String, nullable = False, server_default = "")
 
     @validates("pillar_id")
     def validate_pillar(self, key, value):

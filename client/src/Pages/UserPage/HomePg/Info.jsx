@@ -1,3 +1,4 @@
+import { LinkButton } from "../../../Components/LinkButton"
 import { WaveBg } from "../../../Components/WaveBg"
 import deskImg from "../../../Resources/deskImg.jpeg"
 import educationLogo from "../../../Resources/educationLogo.png"
@@ -86,11 +87,8 @@ export function Info(){
                         ))}
                     </div>
 
-                    <button
-                        className="link-button"
-                    >
-                        Learn More <span className="animate-pulse">→</span>
-                    </button>
+                    
+                    <LinkButton buttonLink="/about" />
                 </div>
             </div>
             <WaveBg colour={"white"}/>

@@ -18,7 +18,6 @@ export function AdminPgSections({
     const allPgSections = appData?.allPgSections
     const setAllPgSections = appData?.setAllPgSections
 
-    console.log(pgSectionAction)
 
     return(
         <>

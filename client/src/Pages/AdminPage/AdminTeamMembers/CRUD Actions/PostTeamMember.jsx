@@ -28,6 +28,7 @@ export function PostTeamMember({
             instanceType={"Team Member"}
             inputArray={TeamMemberInputs()}
             handleInstanceSubmit={handleProductPost}
+            setState={setTeamMemberAction}
         />
     )
 }

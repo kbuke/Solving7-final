@@ -36,7 +36,7 @@ export function PatchInstance({
     return(
         <form
             onSubmit={handleSubmit(handleInstancePatch)}
-            className="admin-form"
+            className="w-9/10 h-9/10 bg-white px-2 flex flex-col lg:w-2/3"
         >
             <PopUpHeader 
                 header={`Edit ${instanceType}: ${instanceName}`}
@@ -52,7 +52,7 @@ export function PatchInstance({
             />
             </div>
 
-            <button className="submit-button">
+            <button className="submit-button self-end">
                 Edit {instanceType}
             </button>
         </form>

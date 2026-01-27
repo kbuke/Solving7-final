@@ -28,9 +28,9 @@ export function HomePg(){
             <Articles />
             
 
-            {/* <Contact 
+            <Contact 
                 appData={appData}
-            /> */}
+            />
         </div>
     )
 }

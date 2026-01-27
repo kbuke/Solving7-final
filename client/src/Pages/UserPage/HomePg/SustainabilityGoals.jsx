@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { WaveBg } from "../../../Components/WaveBg"
 import { Carousel } from "../../../Components/Carousel"
+import { LinkButton } from "../../../Components/LinkButton"
 
 export function SustainabilityGoals({ appData }) {
   const [achievedGoals, setAchievedGoals] = useState([])
@@ -15,6 +16,7 @@ export function SustainabilityGoals({ appData }) {
 
   const unGoalCoverImg = (id) =>
     `/UN-Covers/${id}-cover.jpg`
+  
 
   return (
     <section className="home-sections bg-green-section py-16 pb-26">
@@ -50,13 +52,10 @@ export function SustainabilityGoals({ appData }) {
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam dolore tenetur illo iusto. Possimus error voluptatum nisi laboriosam accusantium eos? Ratione quia alias beatae velit pariatur consequuntur perspiciatis, cupiditate suscipit?
                 </p>
 
-                <button
-                    className="link-button"
-                >
-                    Learn More <span className="animate-pulse">→</span>
-                </button>
+                <LinkButton buttonLink={"/sustainablegoals"} />
             </div>
         </div>
+        <WaveBg colour={"white"}/>
     </section>
   )
 }

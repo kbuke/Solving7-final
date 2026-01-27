@@ -7,24 +7,23 @@ export function PopUpHeader({
 }){
     return(
         <div
-            className="grid grid-cols-[2fr_1fr] border-b gap-20 py-2"
+            className="flex items-center p-3 border-b border-gray-200 duration-200 hover:cursor-pointer w-full justify-self-center justify-between sticky top-0 z-100 bg-white"
         >
             <h1
-                className="font-bold relative left-5 uppercase"
+                className="font-bold relative left-5 uppercase tracking-wide text-[20px]"
             >
                 {header}
             </h1>
 
-            <button
-                onClick={() => setState("")}
-                className="rounded-full h-10 w-10"
-                type="button"
+            <div
+                className="h-10 w-10 flex justify-center items-center rounded-full hover:bg-gray-600"
             >
                 <FontAwesomeIcon 
                     icon={faTimesCircle}
-                    className="bg-red-600 rounded-full min-h-full min-w-full"
+                    className="text-red-600 text-[30px]"
+                    onClick={() => setState(null)}
                 />
-            </button>
+            </div>
         </div>
     )
 }

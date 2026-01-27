@@ -5,17 +5,22 @@ import { PostPillar } from "./CRUD Actions/PostPillar";
 import { DeletePillar } from "./CRUD Actions/DeletePillar";
 import { useFetch } from "../../../Hooks/useFetch";
 import { PatchPillar } from "./CRUD Actions/PatchPillar";
+import { PillarGoals } from "./Relations/PillarGoals";
 
 export function AdminPillars({ 
     appData, 
     isLoading,
-    setIsLoading
+    setIsLoading,
+    openRelation,
+    setOpenRelation
 }) {
     const [pillarAction, setPillarAction] = useState()
     const [selectedPillarId, setSelectedPillarId] = useState()
     const [selectedPillar, setSelectedPillar] = useState()
 
-    useFetch(`/api/pillars/${selectedPillarId}`, setSelectedPillar, [selectedPillarId])
+    const allSustainablePillars = appData?.allSustainablePillars
+
+    useFetch(`/api/pillars/${selectedPillarId}`, setSelectedPillar, [selectedPillarId, allSustainablePillars])
 
     const allPillars = appData?.allPillars;
     const setAllPillars = appData?.setAllPillars
@@ -50,6 +55,8 @@ export function AdminPillars({
                                 value: pillar.intro,
                             }
                         ]}
+                        relational={"Pillar Goals"}
+                        setSelectedRelation={setOpenRelation}
                     />
                 ))}
             />
@@ -76,6 +83,19 @@ export function AdminPillars({
                     setAllPillars={setAllPillars}
                     setPillarAction={setPillarAction}
                     selectedPillar={selectedPillar}
+                />
+                : null
+            }
+
+            {openRelation === "Pillar Goals" && selectedPillar
+                ? <PillarGoals 
+                    appData={appData}
+                    pillarId={selectedPillarId}
+                    pillar={selectedPillar?.pillar}
+                    selectedPillar={selectedPillar}
+                    setGoalRelationAction={setOpenRelation}
+                    setOpenRelation={setOpenRelation}
+                    allSustainablePillars={allSustainablePillars}
                 />
                 : null
             }

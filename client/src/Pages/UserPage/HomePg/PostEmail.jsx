@@ -38,9 +38,9 @@ export function PostEmail({
     return(
         <form 
             onSubmit={handleSubmit(handleEmailPost)}
-            className="mt-4 flex flex-col lg:rounded-2xl lg:p-8 lg:bg-linear-to-br from-green-500 to-green-600"
+            className="mt-4 flex flex-col lg:rounded-2xl lg:p-8 lg:bg-linear-to-br bg-gray-200/60"
         >
-            <h1 className="home-section-header text-center text-white">
+            <h1 className="home-section-header text-center">
                 Send Email
             </h1>
 

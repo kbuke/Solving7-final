@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { PopUp } from "../../../../Components/PopUp"
 import { usePost } from "../../../../Hooks/usePost"
+import { RequiredInput } from "../../../../Components/RequiredInput"
 
 export function PostSustainablePillar({
     allPillars,
@@ -35,14 +36,26 @@ export function PostSustainablePillar({
             validation: {
                 required: "Please select a pillar"
             }
+        },
+
+        {
+            type: "textarea",
+            label: "Please add relation info",
+            placeholder: "Please add relation info",
+            name: "sustainablePillarRelationship",
+            validation: RequiredInput("Sustainable, Pillar Relationship")
         }
     ]
 
     const handlePillarPost = (formData) => {
+        console.log(formData)
         const payload = {
             sustainableId: sustainableId,
-            pillarId: formData.selectedPillar.value
+            pillarId: formData.selectedPillar.value,
+            sustainablePillarRelationship: formData.sustainablePillarRelationship
         }
+
+        console.log(payload)
 
         usePost({
             url: "/api/pillargoals",

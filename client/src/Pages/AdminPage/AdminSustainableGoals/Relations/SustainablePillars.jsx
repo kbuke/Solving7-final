@@ -8,7 +8,8 @@ export function SustainablePillars({
     sustainableId,
     sustainableGoal,
     selectedSustainableGoal,
-    setPillarRelationAction
+    setPillarRelationAction,
+    setOpenRelation
 }){
     const [pillarAction, setPillarAction] = useState()
     const [pillarId, setPillarId] = useState()
@@ -30,6 +31,7 @@ export function SustainablePillars({
                 setRelationalId={setPillarId}
                 setCloseAction={setPillarRelationAction}
                 setRelationAction={setPillarAction}
+                setState={setOpenRelation}
             />
 
             {pillarAction === "post"

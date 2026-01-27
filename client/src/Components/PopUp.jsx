@@ -3,6 +3,7 @@ import { MobileNavBar } from "./NavBar/MobileNavBar";
 import { PatchInstance } from "./PatchInstance";
 import { PostInstance } from "./PostInstance";
 import { RelationalInstance } from "./RelationalInstance";
+import { SustainablePopUp } from "./SustainablePopUp";
 import { useScrollLock } from "./useScrollLock";
 
 export function PopUp({
@@ -21,17 +22,18 @@ export function PopUp({
     success,
     setSuccess,
     setCloseAction,
-    navMenu
-}){
-    // Stop page behind from scrolling when pop up is active.
-    useScrollLock(true)
+    navMenu,
+    selectedId,
+    setSelectedId,
+    additionalRelationArray,
+    editComponent   // NEW PROP
+}) {
+    useScrollLock(true);
 
-    return(
-        <div
-            className="fixed inset-0 bg-black/40 z-50 flex justify-center items-center"
-        >
-            {type === "post"
-                ? <PostInstance 
+    return (
+        <div className="fixed inset-0 z-50 flex justify-center items-center bg-black/40">
+            {type === "post" && (
+                <PostInstance 
                     instanceType={instanceType}
                     inputArray={inputArray}
                     handleInstanceSubmit={handleInstanceSubmit}
@@ -39,15 +41,17 @@ export function PopUp({
                     success={success}
                     setSuccess={setSuccess}
                 />
-                : type === "delete"
-                ? <DeleteInstance 
+            )}
+            {type === "delete" && (
+                <DeleteInstance 
                     handleInstanceDelete={handleInstanceSubmit}
                     instanceName={instanceName}
                     instanceType={instanceType}
                     setState={setState}
                 />
-                : type === "patch"
-                ? <PatchInstance 
+            )}
+            {type === "patch" && (
+                <PatchInstance 
                     instanceType={instanceType}
                     instanceName={instanceName}
                     patchReset={patchReset}
@@ -56,22 +60,26 @@ export function PopUp({
                     inputArray={inputArray}
                     setState={setState}
                 />
-                : type === "relational"
-                ? <RelationalInstance 
+            )}
+            {type === "relational" && (
+                <RelationalInstance 
                     relationTitle={instanceName}
                     relationArray={relationArray}
                     relationKey={relationKey}
                     setCloseAction={setCloseAction}
                     setRelationAction={setRelationAction}
                     setRelationalId={setRelationalId}
-                />
-                : type === "mobile menu"
-                ? <MobileNavBar 
-                    navMenu={navMenu}
                     setState={setState}
+                    additionalRelationArray={additionalRelationArray}
                 />
-                : null
-            }
+            )}
+            {type === "edit" && editComponent && editComponent}
+            {type === "mobile menu" && (
+                <MobileNavBar navMenu={navMenu} setState={setState} />
+            )}
+            {type === "sustainable popup" && (
+                <SustainablePopUp selectedId={selectedId} setSelectedId={setSelectedId} />
+            )}
         </div>
-    )
+    );
 }

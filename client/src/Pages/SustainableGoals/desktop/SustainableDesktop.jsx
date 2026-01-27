@@ -7,9 +7,9 @@ export function SustainableDeskTop({
     unIcons,
     allSustainablePillars,
     pgInfo,
-    achievedGoals
+    achievedGoals,
+    setSelectedGoalId
 }){
-    console.log(allSustainablePillars)
 
 
     return(
@@ -45,6 +45,7 @@ export function SustainableDeskTop({
                             key={index}
                             src={unIcons(goal?.id)}
                             className="h-42 w-42 rounded-2xl hover:scale-110 cursor-pointer duration-300 mt-4"
+                            onClick={() => setSelectedGoalId(goal?.id)}
                         />
                     ))}
                 </div>

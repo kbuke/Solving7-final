@@ -4,50 +4,75 @@ export function RelationalInstance({
     relationTitle,
     relationArray,
     relationKey,
+    idKey = "id",       // Dynamic ID for delete action
     setCloseAction,
     setRelationAction,
-    setRelationalId
+    setRelationalId,
+    setState,
+    additionalRelationArray
 }){
-    return(
-        <div className="h-9/10 w-90 bg-white flex flex-col justify-center items-center rounded">
+    return (
+        <div className="h-9/10 w-9/10 bg-white rounded flex flex-col lg:w-2/3 overflow-y-auto">
             <PopUpHeader 
-                header={"New Pillar"}
-                setState={(setCloseAction)}
+                header={relationTitle}
+                setState={setState}
             />
 
-            <button 
-                className="bg-green-600 w-60 mb-4"
-                onClick={() => {
-                    setRelationAction("post")
-                }}
-            >
-                Add {relationTitle}
-            </button>
+            <div className="flex flex-col py-10 px-4">
+                {relationArray.length === 0 && (
+                    <p>No Defined Relations</p>
+                )}
 
-            <div>
+                <button 
+                    className="bg-green-600 w-60 mb-4 self-center h-12 rounded"
+                    onClick={() => setRelationAction("post")}
+                >
+                    Add {relationTitle}
+                </button>
+
                 <ul className="list-disc list-inside">
-                    {relationArray.map((relation, index) => (
-                        <div
-                            key={index}
-                            className="flex flex-col border-b"
-                        >
-                            <li>
-                                {relation?.[relationKey]}
-                            </li>
+                    {relationArray.map((relation) => {
+                        const relationshipObj = additionalRelationArray?.find(
+                            r => r.sustainable_id === relation.id
+                        );
 
-                            <button 
-                                className="bg-red-600 h-10 w-20 self-center mt-2 mb-2"
-                                onClick={() => {
-                                    setRelationalId(relation?.id)
-                                    setRelationAction("delete")
-                                    setSelectedId(chosenId)
-                                }}
-                            >
-                                Delete
-                            </button>
-                        </div>
-                    ))}
+                        return (
+                            <li key={relation.id} className="flex flex-col border-b py-2">
+                                <div className="flex justify-between items-center">
+                                    <span>{relation.goal}</span>
+
+                                    <div className="flex gap-2">
+                                        <button
+                                            className="bg-yellow-500 h-8 w-20 rounded"
+                                            onClick={() => {
+                                                setRelationalId(relation.id);
+                                                setRelationAction("edit"); // Trigger edit modal
+                                            }}
+                                        >
+                                            Edit
+                                        </button>
+
+                                        <button
+                                            className="bg-red-600 h-8 w-20 rounded"
+                                            onClick={() => {
+                                                setRelationalId(relation.id);
+                                                setRelationAction("delete");
+                                            }}
+                                        >
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {relationshipObj?.relationship && (
+                                    <p className="text-gray-600 mt-1">{relationshipObj.relationship}</p>
+                                )}
+                            </li>
+                        );
+                    })}
                 </ul>
+
+
             </div>
         </div>
     )

@@ -91,6 +91,7 @@ export function AdminTeamMembers({
                     setSelectedTeamMemberId={setSelectedTeamMemberId}
                     memberName={selectedTeamMember?.name}
                     selectedTeamMember={selectedTeamMember}
+                    setOpenRelation={setOpenRelation}
                 />
                 : null
             }

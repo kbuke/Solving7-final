@@ -8,7 +8,8 @@ export function PostMemberTeam({
     setMemberTeamsAction,
     isLoading,
     setIsLoading,
-    selectedTeamMember
+    selectedTeamMember,
+    setOpenRelation
 }){
     const definedTeams = selectedTeamMember?.teams
     
@@ -36,7 +37,6 @@ export function PostMemberTeam({
     ]
 
     const handleMemberTeamPost = (formData) => {
-        console.log(formData)
         const payload = {
             memberId: selectedMemberId,
             teamId: formData.selectedTeam.value
@@ -61,6 +61,7 @@ export function PostMemberTeam({
             instanceType={"Member Team"}
             inputArray={newTeamInput}
             handleInstanceSubmit={handleMemberTeamPost}
+            setState={setOpenRelation}
         />
     )
 

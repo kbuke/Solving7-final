@@ -5,7 +5,9 @@ export function SustainableMobile({
     achievedGoals,
     unIcons,
     goalText,
-    pgInfo
+    pgInfo,
+    setSelectedGoalId,
+    selectedGoalId
 }){
 
     return(
@@ -41,6 +43,7 @@ export function SustainableMobile({
                             src={unIcons(goal?.id)}
                             key={index}
                             className=""
+                            onClick={() => setSelectedGoalId(goal?.id)}
                         />
                     ))}
                 </div>

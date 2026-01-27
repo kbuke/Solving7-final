@@ -8,7 +8,8 @@ export function MemberTeams({
     selectedTeamMemberId,
     setSelectedTeamMemberId,
     memberName,
-    selectedTeamMember
+    selectedTeamMember,
+    setOpenRelation
 }){
     const [memberTeamAction, setMemberTeamAction] = useState()
     const [teamId, setTeamId] = useState()
@@ -29,6 +30,7 @@ export function MemberTeams({
                 instanceName={`${memberName} Teams`}
                 setRelationalId={setTeamId}
                 setRelationAction={setMemberTeamAction}
+                setState={setOpenRelation}
             />
 
             {memberTeamAction === "post"
@@ -40,6 +42,7 @@ export function MemberTeams({
                     isLoading={appData?.isLoading}
                     setIsLoading={appData?.setIsLoading}
                     selectedTeamMember={selectedTeamMember}
+                    setOpenRelation={setOpenRelation}
                 />
                 : memberTeamAction === "delete"
                 ? <DeleteMemberTeam 

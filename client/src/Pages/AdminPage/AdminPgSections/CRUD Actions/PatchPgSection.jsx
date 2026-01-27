@@ -9,7 +9,6 @@ export function PatchPgSection({
     setPgSectionAction,
     selectedPgSection
 }){
-    console.log(selectedPgSectionId)
     const patchPgSectionObject = [
         {
             key: "pgTitle",

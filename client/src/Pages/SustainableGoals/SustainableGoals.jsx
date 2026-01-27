@@ -3,9 +3,11 @@ import { SustainableDeskTop } from "./desktop/SustainableDesktop";
 import { SustainableMobile } from "./mobile/SustainableMobile";
 import unCover from "../../Resources/un-goals-cover.jpg"
 import { useEffect, useState } from "react";
+import { PopUp } from "../../Components/PopUp";
 
 export function SustainableGoals(){
     const [achievedGoals, setAchievedGoals] = useState([])
+    const [selectedGoalId, setSelectedGoalId] = useState(null)
 
     const appData = useOutletContext()
 
@@ -45,6 +47,8 @@ export function SustainableGoals(){
                     noOfGoals={noOfGoals}
                     goalText={goalText}
                     pgInfo={pgInfo}
+                    setSelectedGoalId={setSelectedGoalId}
+                    selectedGoalId={selectedGoalId}
                 />
             </div>
 
@@ -59,8 +63,19 @@ export function SustainableGoals(){
                     allSustainablePillars={allSustainablePillars}
                     pgInfo={pgInfo}
                     achievedGoals={achievedGoals}
+                    setSelectedGoalId={setSelectedGoalId}
+                    selectedGoalId={selectedGoalId}
                 />
             </div>
+
+            {selectedGoalId
+                ? <PopUp 
+                    type={"sustainable popup"}
+                    selectedId={selectedGoalId}
+                    setSelectedId={setSelectedGoalId}
+                />
+                : null
+            }
         </>
     )
 }

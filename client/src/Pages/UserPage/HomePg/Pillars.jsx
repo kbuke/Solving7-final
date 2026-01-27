@@ -9,12 +9,12 @@ export function Pillars({
   const pillarCoverImg = (id) => `/Pillar-Img/pillar-${id}.png`
 
   return (
-    <section className="home-sections py-16 pb-26">
+    <section className="home-sections py-2 pb-26">
         <h1 className="home-section-header lg:hidden">
             UN Sustainability Goals
         </h1>
     
-        <div className="max-w-7xl mx-auto grid gap-10 lg:grid-cols-[4fr_3fr]">
+        <div className="max-w-7xl mx-auto grid lg:gap-10 lg:grid-cols-[4fr_3fr]">
             <div>
                 <h1 className="hidden lg:block home-section-header text-left text-[50px]">
                     UN Sustainability Goals

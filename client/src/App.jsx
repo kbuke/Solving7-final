@@ -22,7 +22,7 @@ function App() {
     useFetch("/api/emails", setAllEmails)
     useFetch("/api/socials", setAllSocials)
     useFetch("/api/session", setLoggedUser)
-    useFetch("/api/pillars", setAllPillars) 
+    useFetch("/api/pillars", setAllPillars, [allSustainablePillars]) 
     useFetch("/api/products", setAllProducts, [allProductPillars, allPillars])
     useFetch("/api/teams", setAllTeams)
     useFetch("/api/pillarproducts", setAllProductPillars)

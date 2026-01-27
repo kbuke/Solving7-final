@@ -49,6 +49,7 @@ export function PatchTeamMember({
             selectedInstance={selectedMember}
             inputArray={patchMemberArray}
             handleInstanceSubmit={handleMemberEdit}
+            setState={setMemberAction}
         />
     )
 }

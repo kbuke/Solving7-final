@@ -6,7 +6,7 @@ export function Contact({
     return(
         <div
             className="
-                home-sections bg-green-section
+                home-sections bg-white-section
             "
         >
             <h1 className="home-section-header">

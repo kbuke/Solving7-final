@@ -47,6 +47,7 @@ export function PatchNewsArticle({
             selectedInstance={selectedNews}
             inputArray={NewsInputs()}
             handleInstanceSubmit={handleArticlePatch}
+            setState={setNewsAction}
         />
     )
 }

@@ -12,8 +12,13 @@ export function TextInput({
         inputArray.map((input, index) => (
             <div 
                 key={index}
-                className="self-center p-4 w-full"
+                className="self-center w-full border-b py-2 border-gray-500/60"
             >
+                <p
+                    className="text-[14px] text-gray-500 uppercase"
+                >
+                    {input?.placeholder}
+                </p>
                 {input?.type === "textarea"
                     ? <textarea 
                         className="textarea-input"

@@ -5,6 +5,7 @@ export function usePatch(
   setArray,
   setAction
 ){
+    console.log("received")
     fetch(url, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },

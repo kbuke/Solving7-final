@@ -88,6 +88,7 @@ export function AdminSustainableGoals({
                     sustainableGoal={selectedSustainableGoal?.goal}
                     selectedSustainableGoal={selectedSustainableGoal}
                     setPillarRelationAction={setOpenRelation}
+                    setOpenRelation={setOpenRelation}
                 />
                 : null
             } 

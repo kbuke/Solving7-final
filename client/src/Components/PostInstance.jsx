@@ -1,7 +1,7 @@
-import { useForm } from "react-hook-form"
-import { TextInput } from "./TextInput"
+import { useForm, Controller } from "react-hook-form"
+import Select from "react-select"
 import { PopUpHeader } from "./PopUpHeader"
-import { useState } from "react"
+import { TextInput } from "./TextInput"
 
 export function PostInstance({
     instanceType,
@@ -10,67 +10,39 @@ export function PostInstance({
     setState,
     success,
     setSuccess
-}){
-
+}) {
     const {
         register,
         handleSubmit,
         control,
-        formState: {errors}
+        formState: { errors }
     } = useForm()
 
-    return(
-        <form 
-            onSubmit={handleSubmit(handleInstanceSubmit)}
-            className="form-popup"
-        >
+    return (
+        <div className="h-9/10 w-9/10 bg-white rounded flex flex-col lg:w-2/3">
             <PopUpHeader 
-                header={`Add New ${instanceType}`}
+                header={`New ${instanceType}`}
                 setState={setState}
             />
-            {success ?
-                <>
-                    <div
-                        className="mt-4 text-center bg-green-600 rounded-2xl p-4 uppercase text-white"
-                    >
-                        Success New {instanceType} Posted!
-                    </div>
 
-                    <div
-                        className="flex flex-row mt-4 gap-4 justify-center"
-                    >
-                        <button
-                            onClick={() => setSuccess(false)}
-                            className="bg-blue-600 w-40"
-                        >
-                            Add New {instanceType}
-                        </button>
+            <form
+                onSubmit={handleSubmit(handleInstanceSubmit)}
+                className="flex flex-col gap-4 p-6 overflow-y-auto"
+            >
+                <TextInput 
+                    inputArray={inputArray}
+                    errors={errors}
+                    register={register}
+                    control={control}
+                />
 
-                        <button
-                            onClick={() => setState("")}
-                            className="bg-red-600 w-40"
-                        >
-                            Close
-                        </button>
-                    </div>
-                </>
-                :
-                <>
-                    <TextInput 
-                        inputArray={inputArray}
-                        errors={errors}
-                        register={register}
-                        control={control}
-                    />
-
-                    <button 
-                        className="submit-button hover:-translate-y-2 self-center w-70 px-4"
-                        type="submit"
-                    >
-                        Add New {instanceType}
-                    </button>
-                </>
-            }
-        </form>
+                <button
+                    type="submit"
+                    className="bg-green-600 w-60 hover:-translate-y-2 duration-200 self-end lg:mt-4"
+                >
+                    Create {instanceType}
+                </button>
+            </form>
+        </div>
     )
 }

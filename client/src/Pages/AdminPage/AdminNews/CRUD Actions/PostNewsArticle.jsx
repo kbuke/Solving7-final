@@ -28,6 +28,7 @@ export function PostNewsArticle({
             instanceType={"Article"}
             inputArray={NewsInputs()}
             handleInstanceSubmit={handleNewsPost}
+            setState={setNewsAction}
         />
     )
 }

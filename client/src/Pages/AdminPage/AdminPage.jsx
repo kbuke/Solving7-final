@@ -54,6 +54,8 @@ export function AdminPage(){
                 instanceButtons={instanceButtons}
                 isLoading={isLoading}
                 setIsLoading={setIsLoading}
+                openRelation={openRelation}
+                setOpenRelation={setOpenRelation}
             />
 
             <AdminProducts 

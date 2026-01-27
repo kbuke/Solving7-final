@@ -13,7 +13,6 @@ export function PostSustainableGoal({
     const [sustainableGoalSuccess, setSustainableGoalSuccess] = useState()
 
     const handleSustainablePost = (formData) => {
-        console.log(formData)
         usePost({
             url: "/api/sustainabilitygoals",
             body: formData,
